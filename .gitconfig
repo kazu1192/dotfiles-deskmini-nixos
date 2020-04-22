@@ -1,0 +1,15 @@
+[user]
+	email = dye.deep.red@gmail.com
+	name = kazu1192
+	enmail = dye.deep.red@gmail.com
+[core]
+	editor = vim
+	pager = less
+[color]
+	ui = true
+[alias]
+	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
+[merge]
+	tool = vimdiff
+[commit]
+	template = /home/host/.gittemplate

@@ -1,0 +1,20 @@
+# VIEWS
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+set blame-view = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+set pager-view = line-number:yes,interval=1 text
+set stage-view = line-number:yes,interval=1 text
+set log-view = line-number:yes,interval=1 text
+set blob-view = line-number:yes,interval=1 text
+set diff-view = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+# SETTINGS
+set vertical-split = no
+set line-graphics = utf-8
+set tab-size = 2
+set ignore-space = at-eol
+set ignore-case = true
+set split-view-height = 80%
+set diff-options = -m --first-parent
+set mouse = true
+set editor-line-number = yes
+set refresh-mode = auto
