@@ -19,4 +19,6 @@ git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-upda
 anyenv install --init
 
 echo '* Starship install *'
+sudo mkdir -p /usr/local
+sudo mkdir -p /usr/local/bin
 curl -fsSlL https://starship.rs/install.sh | bash
