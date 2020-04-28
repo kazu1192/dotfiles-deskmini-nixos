@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+# ffmpeg Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -10,14 +10,9 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -26,22 +21,28 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   # networking.useDHCP = false;
-  # networking.interfaces.enp0s3.useDHCP = true;
-
-  networking = {
-    hostName = "nixox";
-    useDHCP = false;
-    interfaces = {
-      enp0s3.useDHCP = true;
-    };
-   networkmanager.enable = true;
-  };
+  # networking.interfaces.enp37s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  networking = {
+    hostName = "nixox";
+    useDHCP = false;
+    interfaces = {
+      enp37s3.useDHCP = true;
+    };
+   networkmanager.enable = true;
+  };
+
   # Select internationalisation properties.
+  # i18n = {
+  #   consoleFont = "Lat2-Terminus16";
+  #   consoleKeyMap = "us";
+  #   defaultLocale = "en_US.UTF-8";
+  # };
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
@@ -52,22 +53,8 @@
   
   console = {
     font = "LatArCyrHeb-16";
-    keyMap = "jp106";
+    keyMap = "us";
   };
-
-  # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    nox
-    wget vim tmux git
-    exa bat fd procs ripgrep
-    zsh starship
-  ];
-
-  nixpkgs.config.allowUnfree = true;
 
   fonts = {
     enableFontDir = true;
@@ -81,6 +68,29 @@
     ];
   };
 
+  # Set your time zone.
+  time.timeZone = "Asia/Tokyo";
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  # environment.systemPackages = with pkgs; [
+  #   wget vim
+  # ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnsupportedSystem = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    nox pavucontrol ffmpeg
+    cmake gcc gnumake
+    wget vim tmux git unzip
+    exa bat fd procs ripgrep
+    zsh starship
+    chromium firefox profile-sync-daemon
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -89,14 +99,11 @@
   #   enableSSHSupport = true;
   #   pinentryFlavor = "gnome3";
   # };
-  programs = {
-    nm-applet.enable = true;
-  };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -112,6 +119,8 @@
   hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
+  # services.xserver.enable = true;
+  # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable touchpad support.
@@ -120,27 +129,32 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-
+  
   services.xserver = {
     enable = true;
+    layout = "us";
+
+    videoDrivers = [ "nvidia" ];
 
     desktopManager = {
-      default = "none";
       xterm.enable = false;
     };
 
     displayManager = {
-      lightdm.enable = true;
+      defaultSession = "none+i3";
+      sddm.enable = true;
     };
 
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-      extraPackages = with pkgs; [ 
-        dmenu i3status i3lock i3blocks
-        termite rofi conky nitrogen
-        dunst parcellite volumeicon
-      ];
+    windowManager = {
+      i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+        extraPackages = with pkgs; [ 
+          dmenu i3status i3lock i3blocks
+          termite rofi conky nitrogen picom
+          dunst parcellite volumeicon
+        ];
+      };
     };
   };
 
@@ -149,6 +163,7 @@
   #   isNormalUser = true;
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   # };
+
   users.users.host = {
     isNormalUser = true;
     createHome = true;
