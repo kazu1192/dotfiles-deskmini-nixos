@@ -16,6 +16,8 @@ $ex dunst
 $ex nitrogen --restore
 $ex picom -b
 $ex bash ${HOME}/.bin/run_xset
+$ex redshift-gtk
+$ex psensor
 
 # KEY BIND
 floating_modifier $mod
