@@ -59,18 +59,26 @@ call plug#begin('~/.cache/vim/plugged')
 
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'posva/vim-vue'
-Plug 'itchyny/lightline.vim'
-Plug 'cohama/lexima.vim'
-Plug 'mattn/emmet-vim'
-Plug 'morhetz/gruvbox'
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'posva/vim-vue'
+
+Plug 'mattn/emmet-vim'
+Plug 'cohama/lexima.vim'
+Plug 'dense-analysis/ale'
+
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+
+Plug 'prettier/vim-prettier', {
+\ 'do': 'yarn install',
+\ 'branch': 'release/0.x'
+\ }
 
 " Initialize plugin system
 call plug#end()
@@ -81,7 +89,20 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 imap <c-space> <Plug>(asyncomplete_force_refresh)
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup asyncomplete
+  autocmd!
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup end
+
+" ale
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" emmet-vim
+let g:user_emmet_leader_key='<Tab>'
 
 " theme
 syntax on

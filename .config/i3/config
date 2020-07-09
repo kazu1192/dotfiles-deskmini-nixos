@@ -14,10 +14,11 @@ $ex fcitx
 $ex volumeicon
 $ex dunst
 $ex nitrogen --restore
-$ex picom -b
-$ex bash ${HOME}/.bin/run_xset
 $ex redshift-gtk
 $ex psensor
+$ex bash ${HOME}/.bin/run_xset
+$ex nm-applet
+# $ex picom -b
 
 # KEY BIND
 floating_modifier $mod

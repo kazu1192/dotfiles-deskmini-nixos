@@ -1,1 +1,1 @@
-/home/host/.dotfiles/.vim
+/home/host/.dot/.vim

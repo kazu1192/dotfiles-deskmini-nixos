@@ -19,7 +19,7 @@ SAVEHIST=10000
 export JAVA_HOME=/usr/lib/jvm/default
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init - zsh)"
+export PATH=/usr/local/shell:$PATH
 
 # ALIAS Settings
 alias la='ls -a'
@@ -79,9 +79,6 @@ export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 eval "$(starship init zsh)"
-export PATH="$HOME/.anyenv/bin:$PATH"
-export PATH="$HOME/.anyenv/bin:$PATH"
-export PATH="$HOME/.anyenv/bin:$PATH"
-export PATH="$HOME/.anyenv/bin:$PATH"
-export PATH="$HOME/.anyenv/bin:$PATH"
-export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

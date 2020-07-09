@@ -19,3 +19,5 @@ ln -svf $SCRIPT_DIR/.gitconfig ~/.gitconfig
 ln -svf $SCRIPT_DIR/.gittemplate ~/.gittemplate
 
 ln -svf $SCRIPT_DIR/.tmux.conf ~/.tmux.conf
+
+ln -svf $SCRIPT_DIR/.xinitrc ~/.xinitrc
