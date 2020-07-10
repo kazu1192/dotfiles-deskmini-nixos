@@ -17,9 +17,11 @@ SAVEHIST=10000
 
 # PATH Settings
 export JAVA_HOME=/usr/lib/jvm/default
+export PATH=/usr/local/shell:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$HOME/.anyenv/bin:$PATH
-export PATH=/usr/local/shell:$PATH
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # ALIAS Settings
 alias la='ls -a'
@@ -80,5 +82,3 @@ export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --lin
 
 eval "$(starship init zsh)"
 eval "$(anyenv init -)"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
