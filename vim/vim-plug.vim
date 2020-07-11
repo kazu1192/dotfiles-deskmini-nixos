@@ -1,11 +1,26 @@
-"" Vim-plug ""
+
+"         _                       _
+"  __   _(_)_ __ ___        _ __ | |_   _  __ _ 
+"   \ \ / / | '_ ` _ \ _____| '_ \| | | | |/ _` |
+"    \ V /| | | | | | |_____| |_) | | |_| | (_| |
+"     \_/ |_|_| |_| |_|     | .__/|_|\__,_|\__, |
+"                           |_|            |___/ 
+"
+" https://github.com/junegunn/vim-plug
+
+" Automatic installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
 " Make sure you use single quotes
-" call plug#begin('~/.vim/plugged')
-call plug#begin('~/.cache/vim/plugged')
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

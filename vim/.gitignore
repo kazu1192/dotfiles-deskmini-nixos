@@ -1,4 +1,4 @@
-### https://raw.github.com/github/gitignore/2a4de265d37eca626309d8e115218d18985b5435/Global/Vim.gitignore
+### https://raw.github.com/github/gitignore/36ce3a894d9ddff2916bc98d71380aa7167ff1d7/Global/Vim.gitignore
 
 # Swap
 [._]*.s[a-v][a-z]
@@ -19,11 +19,8 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+# autoload
+autoload
+# plugged
+plugged
 
-### ignore config dirs
-.config/chromium
-.config/fcitx
-.config/pulse
-.config/volumeicon
-.config/anyenv
-.config/Slack
