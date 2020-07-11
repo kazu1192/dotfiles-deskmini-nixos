@@ -1,0 +1,67 @@
+#### Conky configuration file
+## to replace the i3status for i3bar
+# This script was partly stolen from a website I can't remember.
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address.
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+
+# JSON for i3bar
+[
+  # Free storage space in /home
+  { "full_text" : " ${fs_free /home} Free" , "color" : "\#FEDFE1" },
+
+  # RAM
+  { "full_text" : " ${mem}" , "color" : \
+  ${if_match ${memperc}<90}"\#FEDFE1"${else}"\#ff0000"${endif} },
+
+  # CPU
+  { "full_text" : " ${cpu}% ${freq_g 1}GHz", "color" : \
+  ${if_match ${cpu}<90}"\#FEDFE1"${else}"\#ff0000"${endif}},
+
+  # Networking
+  ${if_up enp37s0} { "full_text" : "Eth: ${addr enp37s0}" , "color" : "\#51A8DD" }, ${else}\
+    { "full_text" : "No Network" , "color" : "\#ff0000" },\
+  ${endif}\
+
+  { "full_text" : "U:${upspeed enp37s0}" , "color" : "\#C1328E" },
+  { "full_text" : "D:${downspeed enp37s0}" , "color" : "\#A8D8B9" },
+
+  # Volume
+  { "full_text" : " ${exec amixer get Master -M | grep -oE -m1 "[[:digit:]]*%"}", "color" : "\#FEDFE1"},
+  # Time
+  { "full_text" : " ${time %H:%M:%S}" , "color" : "\#FEDFE1"},
+  # Date
+  { "full_text" : " ${time %m-%d %a}-${time %V}W" , "color" : "\#FEDFE1" }
+],
