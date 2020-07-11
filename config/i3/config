@@ -18,7 +18,7 @@ $ex redshift-gtk
 $ex psensor
 $ex bash ${HOME}/.bin/run_xset
 $ex nm-applet
-# $ex picom -b
+$ex picom -b
 
 # KEY BIND
 floating_modifier $mod
