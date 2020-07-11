@@ -1,7 +1,6 @@
 [user]
 	email = dye.deep.red@gmail.com
 	name = kazu1192
-	enmail = dye.deep.red@gmail.com
 [core]
 	editor = vim
 	pager = less
@@ -13,3 +12,5 @@
 	tool = vimdiff
 [commit]
 	template = /home/host/.gittemplate
+[fetch]
+	prune = true
