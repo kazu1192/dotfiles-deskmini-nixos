@@ -91,6 +91,10 @@ command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nnoremap <C-p> :Files<CR>
 
+" vim-lsp
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+
 " asyncomplete
 let g:lsp_async_completion = 1
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -107,13 +111,14 @@ let g:user_emmet_leader_key='<Tab>'
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
-            \ 'left': [ ['mode', 'paste'], ['readonly', 'branchName', 'filepath', 'modified'] ]
-            \ },
+            \ 'left': [ [ 'mode', 'paste' ], 
+            \           [ 'readonly', 'branchName', 'filepath', 'modified' ] ]
+      \ },
       \ 'component_function': {
             \ 'filepath': 'FilePath',
-            \ },
+      \ },
       \ }
 
 function! FilePath()
