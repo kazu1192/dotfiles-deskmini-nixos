@@ -47,6 +47,8 @@ Plug 'mattn/emmet-vim'
 " lexima
 Plug 'cohama/lexima.vim'
 
+Plug 'ConradIrwin/vim-bracketed-paste'
+
 " prettier
 Plug 'prettier/vim-prettier', {
 \ 'do': 'yarn install',
