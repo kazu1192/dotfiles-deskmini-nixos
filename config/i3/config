@@ -22,7 +22,7 @@ $ex nm-applet
 
 # KEY BIND
 floating_modifier $mod
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec termite -e fish
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -show drun"
 bindsym $mod+h focus left

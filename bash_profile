@@ -4,4 +4,6 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export TO_FISH_PATH=$PATH
+
+exec fish
