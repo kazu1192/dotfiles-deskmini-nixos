@@ -1,9 +1,9 @@
 [options]
-font = Fire Code 12
-font = HackGen 12
-font = Noto Sans 12
-font = Noto Sans CJK JP 12
-font = Monospace 12
+font = Fire Code 16
+font = HackGen 16
+font = Noto Sans 16
+font = Noto Sans CJK JP 16
+font = Monospace 16
 scrollback_lines = 10000
 mouse_autohide = true
 cursor_blink = on

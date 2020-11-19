@@ -64,16 +64,21 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-goimports'
+Plug 'mattn/emmet-vim'
 Plug 'posva/vim-vue'
 Plug 'itchyny/lightline.vim'
 Plug 'cohama/lexima.vim'
-Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Initialize plugin system
 call plug#end()
+
+" vim-lsp
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
 
 " asyncomplete
 let g:lsp_async_completion = 1
@@ -87,6 +92,8 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 syntax on
 colorscheme gruvbox
 set background=dark
+
+hi Normal guibg=NONE ctermbg=NONE
 
 " COMMAND MAPS
 inoremap jj <Esc>

@@ -16,8 +16,9 @@ $ex dunst
 $ex nitrogen --restore
 $ex picom -b
 $ex bash ${HOME}/.bin/run_xset
-$ex redshift-gtk
+$ex redshift
 $ex psensor
+$ex nm-applet
 
 # KEY BIND
 floating_modifier $mod
@@ -51,6 +52,9 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # DUAL SCREEN SETTING
 set $1stMonitor HDMI-0
@@ -126,8 +130,8 @@ client.urgent #bfbfbf #162025 #bfbfbf #193a48 #193a48
 client.placeholder #bfbfbf #162025 #bfbfbf #193a48 #193a48
 
 bar {
-  #status_command $HOME/.config/i3/i3status_conky/i3status.sh
-  i3bar_command i3bar
+  #i3bar_command i3bar
   status_command i3status
+  #status_command $HOME/.config/i3/i3status_conky/i3status.sh
   position top
 }
