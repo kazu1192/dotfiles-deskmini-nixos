@@ -1,0 +1,77 @@
+"
+" vimrc
+"
+
+runtime! ./plug.vim
+runtime! ./tab.vim
+
+" view
+set number
+set relativenumber
+set cursorline
+set nowrap
+set scrolloff=100
+set pumheight=10
+set list
+set listchars=tab:^\ ,trail:~
+set display=lastline
+set showtabline=2
+set laststatus=2
+set noshowmode
+
+" inputs
+set clipboard+=unnamedplus
+set backspace=indent,eol,start
+set ambiwidth=double
+set completeopt+=preview
+
+" edit
+set virtualedit=block
+
+" file
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
+filetype plugin indent on
+
+" tab
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set smartindent
+
+" search
+set ignorecase
+set smartcase
+set wrapscan
+set incsearch
+set hlsearch
+
+" others
+set autoread
+set belloff=all
+set mouse=a
+set showcmd
+set showmatch
+set wildmenu
+set nobackup
+set noswapfile
+set history=10000
+set undolevels=1000
+
+hi Comment ctermfg=3
+
+" theme
+syntax enable
+colorscheme iceberg
+set background=dark
+set synmaxcol=256
+
+" COMMAND MAPS
+inoremap jj <Esc>
+tnoremap <silent> <ESC> <C-\><C-n><C-w>
+nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
+noremap! <C-?> <C-h>
+

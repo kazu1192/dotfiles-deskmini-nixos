@@ -1,0 +1,14 @@
+# .gitignore
+*
+!*/
+anyenv
+
+# whitelist
+!/dunst/**
+!/i3/**
+!/nixpkgs/**
+!/picom/**
+!/termite/**
+
+!/.gitignore
+!/README.md
