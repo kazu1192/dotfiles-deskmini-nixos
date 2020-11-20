@@ -1,0 +1,10 @@
+#/bin/sh -eu
+
+# denkoh <電光掲示板風にしたい文> <背景文字> <前景文字> <粗さ>
+# dtimgだと:
+# dtimg <電光掲示板風にしたい文> -b <背景文字> -g <前景文字> -F <粗さ>
+# .bash_aliases`などに追記しておくと便利。
+denkoh(){
+  echo -e "$1"|textimg -F$4|convert - txt:-|awk -F'[, ]' \
+  'NR>2{printf($1==0)?"\n":($4==0)?a:b}' a="$2" b="$3";echo
+}
