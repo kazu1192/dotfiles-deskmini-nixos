@@ -6,7 +6,7 @@ set $mod Mod4
 set $ex exec --no-startup-id
 
 # FONT
-font pango:Noto Sans, Noto Sans CJK JP, sans-serif 10
+font pango:Fira Code,Noto Sans CJK JP,sans-serif 12
 
 # AUTOSTART
 $ex parcellite
@@ -14,10 +14,13 @@ $ex fcitx
 $ex volumeicon
 $ex dunst
 $ex nitrogen --restore
-# $ex picom -b
-$ex redshift
+$ex redshift-gtk
+$ex psensor
 $ex nm-applet
-$ex bash ${HOME}/.bin/run_xset
+$ex picom -b
+# $ex bash ${HOME}/.bin/run_xset
+# $ex bash ${HOME}/.bin/run_xrandr
+# $ex bash .screenlayout/arandr.sh
 
 # KEY BIND
 floating_modifier $mod
@@ -56,18 +59,18 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # DUAL SCREEN SETTING
-set $1stMonitor HDMI-0
-set $2ndMonitor DVI-I-1
-workspace 1 output $1stMonitor
-workspace 2 output $1stMonitor
-workspace 3 output $1stMonitor
-workspace 4 output $1stMonitor
-workspace 5 output $1stMonitor
-workspace 6 output $2ndMonitor
-workspace 7 output $2ndMonitor
-workspace 8 output $2ndMonitor
-workspace 9 output $2ndMonitor
-workspace 10 output $2ndMonitor
+# set $1stMonitor DP-1
+# set $2ndMonitor HDMI-1
+# workspace 1 output $1stMonitor
+# workspace 2 output $1stMonitor
+# workspace 3 output $1stMonitor
+# workspace 4 output $1stMonitor
+# workspace 5 output $1stMonitor
+# workspace 6 output $2ndMonitor
+# workspace 7 output $2ndMonitor
+# workspace 8 output $2ndMonitor
+# workspace 9 output $2ndMonitor
+# workspace 10 output $2ndMonitor
 
 # SWITCH TO WORKSPACE
 bindsym $mod+1 workspace 1
@@ -112,7 +115,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"]      floating enable
 
 # I3-GAPS
-gaps inner 2
+gaps inner 4
 gaps outer 0
 smart_gaps on
 

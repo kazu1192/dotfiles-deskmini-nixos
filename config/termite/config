@@ -1,50 +1,46 @@
+# Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (c) 2016-present Sven Greb <code@svengreb.de>
+
+# Project:    Nord Termite
+# Repository: https://github.com/arcticicestudio/nord-termite
+# License:    MIT
+
 [options]
-font = Fire Code 16
-font = HackGen 16
-font = Noto Sans 16
-font = Noto Sans CJK JP 16
-font = Monospace 16
+font = Fira Code 14
+font = HackGen 14
+font = Noto Sans 14
+font = Noto Sans CJK JP 14
+font = Noto Emoji 14
+font = Monospace 14
 scrollback_lines = 10000
 mouse_autohide = true
 cursor_blink = on
 clickable_url = true
 
 [colors]
-background = rgba(28,28,28,0.8)
-foreground = #ebdbb2
-foreground_bold = #ebdbb2
-cursor = #98971a
+cursor = #d8dee9
+cursor_foreground = #2e3440
 
-# dark0 + gray
-color0 = #282828
-color8 = #928374
+foreground = #d8dee9
+foreground_bold = #d8dee9
+# background = #2e3440
+background = rgba(46,52,64,0.95)
 
-# neutral_red + bright_red
-color1 = #cc241d
-color9 = #fb4934
+highlight = #4c566a
 
-# neutral_green + bright_green
-color2 = #98971a
-color10 = #b8bb26
-
-# neutral_yellow + bright_yellow
-color3 = #d79921
-color11 = #fabd2f
-
-# neutral_blue + bright_blue
-color4 = #458588
-color12 = #83a598
-
-# neutral_purple + bright_purple
-color5 = #b16286
-color13 = #d3869b
-
-# neutral_aqua + faded_aqua
-color6 = #689d6a
-color14 = #8ec07c
-
-# light4 + light1
-color7 = #a89984
-color15 = #ebdbb2
-
-# vim: ft=dosini cms=#%s
+color0  = #3b4252
+color1  = #bf616a
+color2  = #a3be8c
+color3  = #ebcb8b
+color4  = #81a1c1
+color5  = #b48ead
+color6  = #88c0d0
+color7  = #e5e9f0
+color8  = #4c566a
+color9  = #bf616a
+color10 = #a3be8c
+color11 = #ebcb8b
+color12 = #81a1c1
+color13 = #b48ead
+color14 = #8fbcbb
+color15 = #eceff4
