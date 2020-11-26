@@ -65,9 +65,9 @@ hi Comment ctermfg=3
 
 " theme
 syntax enable
-colorscheme iceberg
 set background=dark
 set synmaxcol=256
+colorscheme iceberg
 
 " COMMAND MAPS
 inoremap jj <Esc>

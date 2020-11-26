@@ -37,7 +37,6 @@ alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias ..='cd ../'
 alias diff='diff -U1'
-alias pp='sudo powerpill'
 
 # autoload -Uz compinit && compinit
 
