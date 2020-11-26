@@ -9,7 +9,7 @@ repo = 'prettier/vim-prettier'
 build = 'yarn install'
 on_ft = ['javascript', 'typescript', 'vue', 'css', 'scss', 'json', 'markdown']
 hook_add = '''
-source ~/.config/nvim/plugins/vim-prettier.rc.vim
+source ~/.vim/rc/plugins/vim-prettier.rc.vim
 '''
 
 # File

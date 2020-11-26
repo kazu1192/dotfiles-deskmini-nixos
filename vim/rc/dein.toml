@@ -12,21 +12,21 @@ build = 'make'
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
-  source ~/.config/nvim/plugins/ale.rc.vim
+  source ~/.vim/rc/plugins/ale.rc.vim
 '''
 
 # Git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-  source ~/.config/nvim/plugins/vim-fugitive.rc.vim
+  source ~/.vim/rc/plugins/vim-fugitive.rc.vim
 '''
 
 # View
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-  source ~/.config/nvim/plugins/lightline.rc.vim
+  source ~/.vim/rc/plugins/lightline.rc.vim
 '''
 
 # Theme
