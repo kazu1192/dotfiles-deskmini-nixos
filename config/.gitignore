@@ -10,6 +10,7 @@ anyenv
 !/picom/**
 !/termite/**
 !/nvim/**
+!/fish/config.fish
 
 !/.gitignore
 !/README.md
