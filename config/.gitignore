@@ -9,6 +9,7 @@ anyenv
 !/nixpkgs/**
 !/picom/**
 !/termite/**
+!/nvim/**
 
 !/.gitignore
 !/README.md
