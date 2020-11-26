@@ -1,0 +1,36 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo =  'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo =  'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo =  'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo =  'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+  source ~/.vim/rc/plugins/vim-fugitive.rc.vim
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  source ~/.vim/rc/plugins/lightline.rc.vim
+'''
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
