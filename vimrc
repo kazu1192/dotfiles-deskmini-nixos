@@ -1,5 +1,5 @@
 " --------------------
-" Neovim
+"       vimrc
 " --------------------
 " (respect craftzdog)
 
@@ -125,9 +125,9 @@ if has('unix')
   endif
 endif
 
-source ~/.config/nvim/dein/dein.vim
-source ~/.config/nvim/cmd.vim
-source ~/.config/nvim/map.vim
+source ~/.vim/vimrc.dein
+source ~/.vim/vimrc.cmds
+source ~/.vim/vimrc.maps
 
 " --------------------
 " Color scheme

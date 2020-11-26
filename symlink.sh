@@ -12,12 +12,12 @@ ln -snv $SCRIPT_DIR/zshrc ~/.zshrc
 ln -snv $SCRIPT_DIR/zprofile ~/.zprofile
 
 ln -snv $SCRIPT_DIR/vim ~/.vim
-ln -snv $SCRIPT_DIR/vim/vimrc ~/.vimrc
+ln -snv $SCRIPT_DIR/vimrc ~/.vimrc
 
 ln -snv $SCRIPT_DIR/tigrc ~/.tigrc
 
 ln -snv $SCRIPT_DIR/gitconfig ~/.gitconfig
-ln -snv $SCRIPT_DIR/gittemplate ~/.gittemplate
+ln -snv $SCRIPT_DIR/gitignore ~/.gitignore
 
 ln -snv $SCRIPT_DIR/tmux.conf ~/.tmux.conf
 
