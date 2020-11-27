@@ -19,7 +19,7 @@ set showcmd
 set cmdheight=1
 
 " inputs
-set clipboard^=unnamedplus
+set clipboard+=unnamedplus
 set encoding=utf-8
 set fileencodings=utf-8,sjis,euc-jp,latin
 set fileformats=unix,dos,mac
@@ -92,6 +92,10 @@ au BufNewFile,BufRead *.md set filetype=markdown
 " Flow
 au BufNewFile,BufRead *.flow set filetype=javascript
 
+" Tern
+" Disable auto preview window
+set completeopt-=preview
+
 " --------------------
 " Cursor line
 " --------------------
@@ -126,6 +130,7 @@ if has('unix')
 endif
 
 source ~/.vim/vimrc.dein
+source ~/.vim/vimrc.plugins
 source ~/.vim/vimrc.cmds
 source ~/.vim/vimrc.maps
 

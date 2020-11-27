@@ -3,34 +3,60 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-build = 'make'
+hook_post-update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
-repo =  'prabirshrestha/asyncomplete.vim'
+repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
-repo =  'prabirshrestha/asyncomplete-lsp.vim'
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
-repo =  'prabirshrestha/vim-lsp'
+repo = 'prabirshrestha/vim-lsp'
 
 [[plugins]]
-repo =  'mattn/vim-lsp-settings'
+repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-hook_add = '''
-  source ~/.vim/rc/plugins/vim-fugitive.rc.vim
-'''
+
+[[plugins]]
+repo = 'tpope/vim-rhubarb'
+
+[[plugins]]
+repo = 'jlanzarotta/bufexplorer'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = '''
-  source ~/.vim/rc/plugins/lightline.rc.vim
-'''
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
