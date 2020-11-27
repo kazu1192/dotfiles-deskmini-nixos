@@ -125,7 +125,7 @@ if has('unix')
   let s:uname = system("uname -s")
   " Do Mac stuff
   if s:uname == "Darwin\n"
-    source ~/.vimrc.osx
+    source ~/.vim/vimrc.osx
   endif
 endif
 
