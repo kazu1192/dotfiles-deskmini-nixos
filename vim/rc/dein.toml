@@ -48,11 +48,14 @@ repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
 repo = 'junegunn/fzf'
-build = './install'
+build_on = '''
+  ./install --all
+''' 
 merged = 0
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+depends = 'fzf'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
