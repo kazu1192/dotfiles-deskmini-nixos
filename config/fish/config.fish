@@ -1,7 +1,11 @@
 # alias settings
 abbr c "cd"
+abbr mk "mkdir -p"
 abbr cl "clear"
 abbr vi "nvim"
 abbr vim "nvim"
 abbr g "git"
 abbr do "sudo docker"
+abbr docker "sudo docker"
+abbr pacman "sudo pacman"
+abbr rs "rsync -ahv --progress"
