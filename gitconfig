@@ -56,3 +56,5 @@
   root = ~/.ghq
 [push]
 	default = simple
+[credential]
+	helper = cache --timeout=86400
