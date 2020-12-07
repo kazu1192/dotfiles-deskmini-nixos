@@ -6,7 +6,7 @@ set $mod Mod4
 set $ex exec --no-startup-id
 
 # FONT
-font pango:Fira Code, FontAwesome, DejaVu Sans Mono 10
+font pango:Fira Code, DejaVu Sans Mono 10
 
 # AUTOSTART
 $ex parcellite

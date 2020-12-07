@@ -75,3 +75,4 @@ schemes:
       white:   '#feffff'
 
 colors: *tender
+background_opacity: 0.90
