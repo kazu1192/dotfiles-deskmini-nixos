@@ -4,7 +4,7 @@
 
 shell:
   # program: usr/bin/fish
-  program: /home/host/.bin/alacritty_wrapper.sh
+  program: /home/host/.bin/fish_wrapper.sh
   args:
     - -l
     - -c
