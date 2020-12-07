@@ -6,11 +6,14 @@ anyenv
 # whitelist
 !/dunst/**
 !/i3/**
+!/i3status/**
 !/nixpkgs/**
 !/picom/**
 !/termite/**
+!/terminator/**
 !/nvim/**
 !/fish/config.fish
+!/redshift.conf
 
 !/.gitignore
 !/README.md
