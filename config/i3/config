@@ -14,10 +14,10 @@ $ex fcitx
 $ex volumeicon
 $ex dunst
 $ex nitrogen --restore
-$ex redshift-gtk
-$ex psensor
 $ex nm-applet
 $ex picom -b
+# $ex psensor
+# $ex redshift-gtk
 # $ex bash ${HOME}/.bin/run_xset
 # $ex bash ${HOME}/.bin/run_xrandr
 # $ex bash .screenlayout/arandr.sh
