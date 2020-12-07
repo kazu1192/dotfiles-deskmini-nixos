@@ -3,14 +3,15 @@
 # ------------------------------
 
 shell:
-  program: /usr/bin/fish
+  # program: usr/bin/fish
+  program: /home/host/.bin/alacritty_wrapper.sh
   args:
     - -l
     - -c
     - "tmux attach || tmux"
 
 font:
-  size: 14.0
+  size: 11.0
   normal:
     family: Fira Code
   bold:

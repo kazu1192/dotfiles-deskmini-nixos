@@ -31,9 +31,14 @@
     hostName = "nixox";
     useDHCP = false;
     interfaces = {
-      enp37s3.useDHCP = true;
+      wlp2s0.useDHCP = true;
     };
-   networkmanager.enable = true;
+    networkmanager.enable = true;
+  };
+
+  location = {
+    latitude = 35.4;
+    longitude = 139.6;
   };
 
   # Select internationalisation properties.
@@ -65,6 +70,7 @@
       noto-fonts-emoji
       fira-code
       fira-code-symbols
+      FontAwesome
     ];
   };
 
@@ -83,12 +89,16 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nox pavucontrol ffmpeg
-    cmake gcc gnumake
-    wget vim tmux git unzip
+    nox pavucontrol ffmpeg networkmanagerapplet
+    cmake gcc gnumake nodejs 
+    git tig fzf ghq gitAndTools.hub
+    wget neovim tmux unzip
     exa bat fd procs ripgrep
-    zsh starship
-    chromium firefox profile-sync-daemon
+    termite alacritty terminator
+    zsh starship fish
+    chromium firefox vivaldi
+    # dropbox - we don't need this in the environment. systemd unit pulls it in
+    dropbox-cli
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -99,6 +109,7 @@
   #   enableSSHSupport = true;
   #   pinentryFlavor = "gnome3";
   # };
+  programs.ssh.askPassword = "";
 
   # List services that you want to enable:
 
@@ -110,6 +121,10 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    allowedTCPPorts = [ 17500 ];
+    allowedUDPPorts = [ 17500 ];
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -134,7 +149,9 @@
     enable = true;
     layout = "us";
 
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "intel" ];
+
+    libinput.enable = true;
 
     desktopManager = {
       xterm.enable = false;
@@ -151,11 +168,32 @@
         package = pkgs.i3-gaps;
         extraPackages = with pkgs; [ 
           dmenu i3status i3lock i3blocks
-          termite rofi conky nitrogen picom
+          rofi conky nitrogen picom
           dunst parcellite volumeicon
+          xorg.xbacklight
         ];
       };
     };
+  };
+
+  services.redshift = {
+    enable = true;
+    brightness = {
+      # Note the string values below.
+      day = "1";
+      night = "0.8";
+    };
+    temperature = {
+      day = 6000;
+      night = 5000;
+    };
+  };
+
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "* 23 * * *  root  cat /etc/nixos/configuration.nix > /home/host/.dotfiles/nixos/configratuin.nix"
+    ];
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -167,9 +205,29 @@
   users.users.host = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.zsh;
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    shell = pkgs.bash;
   };
+
+  systemd.user.services.dropbox = {
+    description = "Dropbox";
+    wantedBy = [ "graphical-session.target" ];
+    environment = {
+      QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
+      QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
+    };
+    serviceConfig = {
+      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+      KillMode = "control-group"; # upstream recommends process
+      Restart = "on-failure";
+      privateTmp = true;
+      ProtectSystem = "full";
+      Nice = 10;
+    };
+  };
+
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
