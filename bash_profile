@@ -12,6 +12,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # node setting
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+export LANG=ja_JP.UTF-8
 
 # [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 echo "type startx!"
