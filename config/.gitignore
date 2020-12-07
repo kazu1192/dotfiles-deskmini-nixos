@@ -9,6 +9,7 @@ anyenv
 !/i3status/**
 !/nixpkgs/**
 !/picom/**
+!/alacritty/**
 !/termite/**
 !/terminator/**
 !/nvim/**

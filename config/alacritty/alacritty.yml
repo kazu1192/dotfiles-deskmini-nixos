@@ -1,0 +1,80 @@
+# ------------------------------
+# alacritty.yml
+# ------------------------------
+
+shell:
+  program: /usr/bin/fish
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+
+font:
+  size: 14.0
+  normal:
+    family: Fira Code
+  bold:
+    family: Fira Code
+  italic:
+    family: Fira Code
+
+schemes:
+  # Colors (Hybrid)
+  hybrid: &hybrid
+    # Default colors
+    primary:
+      background: '#27292c'
+      foreground: '#d0d2d1'
+
+    # Normal colors
+    normal:
+      black:   '#35383b'
+      red:     '#b05655'
+      green:   '#769972'
+      yellow:  '#e1a574'
+      blue:    '#7693ac'
+      magenta: '#977ba0'
+      cyan:    '#749e99'
+      white:   '#848b92'
+
+    # Bright colors
+    bright:
+      black:   '#484c52'
+      red:     '#d27c7b'
+      green:   '#dffebe'
+      yellow:  '#f0d189'
+      blue:    '#96b1c9'
+      magenta: '#bfa5c7'
+      cyan:    '#9fc9c3'
+      white:   '#fcf7e2'
+
+  # Colors (Tender)
+  tender: &tender
+    # Default colors
+    primary:
+      background: '#282828'
+      foreground: '#eeeeee'
+
+    # Normal colors
+    normal:
+      black:   '#282828'
+      red:     '#f43753'
+      green:   '#c9d05c'
+      yellow:  '#ffc24b'
+      blue:    '#b3deef'
+      magenta: '#d3b987'
+      cyan:    '#73cef4'
+      white:   '#eeeeee'
+
+    # Bright colors
+    bright:
+      black:   '#4c4c4c'
+      red:     '#f43753'
+      green:   '#c9d05c'
+      yellow:  '#ffc24b'
+      blue:    '#b3deef'
+      magenta: '#d3b987'
+      cyan:    '#73cef4'
+      white:   '#feffff'
+
+colors: *tender
