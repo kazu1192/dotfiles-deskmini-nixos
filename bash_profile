@@ -8,7 +8,7 @@
 
 
 # node setting
-export npm_config_prefix=~/.node_modules
+export npm_config_prefix=~/.npm
 export PATH="$HOME/.npm/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
