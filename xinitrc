@@ -33,9 +33,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 export DefaultImModul=fcitx
+export XMODIFIRES="@im=fcitx"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIRES="@im=fcitx"
+export QT5_IM_MODULE=fcitx
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # twm &
 # xclock -geometry 50x50-1+1 &
@@ -45,4 +47,5 @@ export XMODIFIRES="@im=fcitx"
 
 sh $HOME/.screenlayout/arandr.sh &
 sh $HOME/.bin/run_xset &
+fcitx-autostart &
 exec i3

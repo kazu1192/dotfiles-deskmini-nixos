@@ -6,12 +6,12 @@
 # License:    MIT
 
 [options]
-font = Fira Code 14
-font = HackGen 14
-font = Noto Sans 14
-font = Noto Sans CJK JP 14
-font = Noto Emoji 14
-font = Monospace 14
+font = Fira Code 11
+font = HackGen 11
+font = Noto Sans 11
+font = Noto Sans CJK JP 11
+font = Noto Emoji 11
+font = Monospace 11
 scrollback_lines = 10000
 mouse_autohide = true
 cursor_blink = on
