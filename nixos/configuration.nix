@@ -70,7 +70,6 @@
       noto-fonts-emoji
       fira-code
       fira-code-symbols
-      FontAwesome
     ];
   };
 
@@ -192,7 +191,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "* 23 * * *  root  cat /etc/nixos/configuration.nix > /home/host/.dotfiles/nixos/configratuin.nix"
+      "* 23 * * *  root  cat /etc/nixos/configuration.nix > /home/host/.dotfiles/nixos/configuration.nix"
     ];
   };
 
