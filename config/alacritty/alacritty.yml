@@ -6,6 +6,10 @@ shell:
   # program: usr/bin/fish
   program: /home/host/.bin/fish_wrapper.sh
 
+env:
+  #  TERM: alacritty
+  TERM: xterm-256color
+
 font:
   size: 11.0
   normal:

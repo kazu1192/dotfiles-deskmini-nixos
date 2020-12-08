@@ -1,4 +1,6 @@
-#!/bin/sh -eu
+#!/bin/sh
+
+# set -eu
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
@@ -22,3 +24,5 @@ ln -snv $SCRIPT_DIR/gitignore ~/.gitignore
 ln -snv $SCRIPT_DIR/tmux.conf ~/.tmux.conf
 
 ln -snv $SCRIPT_DIR/xinitrc ~/.xinitrc
+
+ln -snv $SCRIPT_DIR/npmrc ~/.npmrc
