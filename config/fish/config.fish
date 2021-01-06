@@ -13,3 +13,12 @@ abbr do "sudo docker"
 abbr dono "sudo docker run --rm -it --user node -v PWD:/app node_dev"
 abbr doc "sudo docker-compose"
 abbr docr "sudo docker-compose run --rm --service-ports"
+
+# fzf settings
+set -U FZF_LEGACY_KEYBINDINGS 0
+set -U npm_config_prefix $HOME/.npm
+
+# PATH
+set -U fish_user_paths /usr/local/bin $fish_user_paths
+set -U fish_user_paths $HOME/.npm/bin $fish_user_paths
+set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
