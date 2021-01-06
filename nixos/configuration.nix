@@ -87,17 +87,18 @@
     nox pavucontrol ffmpeg
     gnome3.networkmanagerapplet
     cmake gcc gnumake nodejs 
-    git tig fzf ghq gitAndTools.hub
+    git tig ghq gitAndTools.hub
+    fzf peco
     wget neovim tmux unzip
     exa bat fd procs ripgrep
     termite alacritty terminator
     zsh starship fish screenfetch
     rofi conky nitrogen picom
     dunst parcellite volumeicon
-    xorg.xbacklight
     chromium firefox vivaldi
     # dropbox - we don't need this in the environment. systemd unit pulls it in
     # dropbox-cli
+    # xorg.xbacklight
   ];
 
   environment.pathsToLink = [ "/libexec" ];
@@ -111,6 +112,7 @@
   #   pinentryFlavor = "gnome3";
   # };
   programs.ssh.askPassword = "";
+  programs.light.enable = true;
 
   # List services that you want to enable:
 
@@ -199,6 +201,8 @@
 
   security.sudo.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
   #   isNormalUser = true;
@@ -211,7 +215,7 @@
     isNormalUser = true;
     createHome = true;
     group = "users";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
     shell = pkgs.bash;
     uid = 1000;
   };
@@ -233,8 +237,6 @@
       Nice = 10;
     };
   };
-
-  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
