@@ -15,10 +15,10 @@ $ex dunst
 $ex nitrogen --restore
 $ex nm-applet
 $ex picom -b
-# $ex fcitx
+$ex fcitx
 # $ex psensor
 # $ex redshift-gtk
-# $ex bash ${HOME}/.bin/run_xset
+$ex bash ${HOME}/.bin/run_xset
 # $ex bash ${HOME}/.bin/run_xrandr
 # $ex bash .screenlayout/arandr.sh
 
@@ -56,8 +56,8 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec light -U 10
+bindsym XF86MonBrightnessDown exec light -A 10
 
 # DUAL SCREEN SETTING
 # set $1stMonitor DP-1

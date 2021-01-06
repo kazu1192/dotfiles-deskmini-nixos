@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, callPackage, ... }:
 
 {
   imports =
@@ -76,29 +76,31 @@
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
-
   nixpkgs.config = {
     allowUnfree = true;
     allowUnsupportedSystem = true;
   };
 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nox pavucontrol ffmpeg networkmanagerapplet
+    nox pavucontrol ffmpeg
+    gnome3.networkmanagerapplet
     cmake gcc gnumake nodejs 
     git tig fzf ghq gitAndTools.hub
     wget neovim tmux unzip
     exa bat fd procs ripgrep
     termite alacritty terminator
-    zsh starship fish
+    zsh starship fish screenfetch
+    rofi conky nitrogen picom
+    dunst parcellite volumeicon
+    xorg.xbacklight
     chromium firefox vivaldi
     # dropbox - we don't need this in the environment. systemd unit pulls it in
-    dropbox-cli
+    # dropbox-cli
   ];
+
+  environment.pathsToLink = [ "/libexec" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -121,6 +123,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   networking.firewall = {
+    enable = true;
     allowedTCPPorts = [ 17500 ];
     allowedUDPPorts = [ 17500 ];
   };
@@ -147,9 +150,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
-
-    videoDrivers = [ "intel" ];
-
+    # videoDrivers = [ "intel" ];
     libinput.enable = true;
 
     desktopManager = {
@@ -157,19 +158,20 @@
     };
 
     displayManager = {
+      # sddm.enable = true;
+      # startx.enable = true;
       defaultSession = "none+i3";
-      sddm.enable = true;
     };
 
     windowManager = {
       i3 = {
         enable = true;
         package = pkgs.i3-gaps;
-        extraPackages = with pkgs; [ 
-          dmenu i3status i3lock i3blocks
-          rofi conky nitrogen picom
-          dunst parcellite volumeicon
-          xorg.xbacklight
+        extraPackages = with pkgs; [
+          dmenu #application launcher most people use
+          i3status # gives you the default i3 status bar
+          i3lock #default i3 screen locker
+          i3blocks #if you are planning on using i3blocks over i3status
         ];
       };
     };
@@ -195,17 +197,23 @@
     ];
   };
 
+  security.sudo.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
   #   isNormalUser = true;
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   # };
 
+  users.motd = "[0m[34m          ::::.    [0m[1;34m':::::     ::::'          [0m[1;34m root[0m[1m@[0m[0m[1;34mnixox[0m\n[0m[34m          ':::::    [0m[1;34m':::::.  ::::'           [0m[1;34m OS:[0m NixOS 20.09.2181.3a02dc9edb2 (Nightingale)[0m\n[0m[34m            :::::     [0m[1;34m'::::.:::::            [0m[1;34m Kernel:[0m x86_64 Linux 5.4.81[0m\n[0m[34m      .......:::::..... [0m[1;34m::::::::             [0m[1;34m Uptime:[0m 10m[0m\n[0m[34m     ::::::::::::::::::. [0m[1;34m::::::    [0m[34m::::.     [0m[1;34m Packages:[0m 6690[0m\n[0m[34m    ::::::::::::::::::::: [0m[1;34m:::::.  [0m[34m.::::'     [0m[1;34m Shell:[0m bash 4.4.23[0m\n[0m[1;34m           .....           ::::' [0m[34m:::::'      [0m[1;34m Resolution:[0m 1920x1080[0m\n[0m[1;34m          :::::            '::' [0m[34m:::::'       [0m[1;34m WM:[0m i3[0m\n[0m[1;34m ........:::::               ' [0m[34m:::::::::::.  [0m[1;34m Disk:[0m 46G / 110G (45%)[0m\n[0m[1;34m:::::::::::::                 [0m[34m:::::::::::::  [0m[1;34m CPU:[0m Intel Core i3-8145U @ 4x 3.9GHz [63.0°C][0m\n[0m[1;34m ::::::::::: [0m[34m..              :::::           [0m[1;34m GPU:[0m Intel Corporation UHD Graphics 620 (Whiskey Lake)[0m\n[0m[1;34m     .::::: [0m[34m.:::            :::::            [0m[1;34m RAM:[0m 1414MiB / 3612MiB[0m\n[0m[1;34m    .:::::  [0m[34m:::::          '''''    [0m[1;34m.....    [0m\n[0m[1;34m    :::::   [0m[34m':::::.  [0m[1;34m......:::::::::::::'    [0m\n[0m[1;34m     :::     [0m[34m::::::. [0m[1;34m':::::::::::::::::'     [0m\n[0m[34m            .:::::::: [0m[1;34m'::::::::::            [0m\n[0m[34m           .::::''::::.     [0m[1;34m'::::.           [0m\n[0m[34m          .::::'   ::::.     [0m[1;34m'::::.          [0m\n[0m[34m         .::::      ::::      [0m[1;34m'::::.         [0m";
+
   users.users.host = {
     isNormalUser = true;
     createHome = true;
+    group = "users";
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.bash;
+    uid = 1000;
   };
 
   systemd.user.services.dropbox = {
