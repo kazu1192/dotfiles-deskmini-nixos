@@ -45,7 +45,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # xterm -geometry 80x20+494-0 &
 # exec xterm -geometry 80x66+0+0 -name login
 
+# sh $HOME/.bin/run_xset &
+# fcitx-autostart &
 sh $HOME/.screenlayout/arandr.sh &
-sh $HOME/.bin/run_xset &
-fcitx-autostart &
 exec i3
