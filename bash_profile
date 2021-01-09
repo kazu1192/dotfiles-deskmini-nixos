@@ -12,4 +12,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # export GDK_DPI_SCALE=0.5
 
 # [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-echo "type startx!"
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && echo "type startx!"
