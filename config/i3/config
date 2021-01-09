@@ -56,8 +56,8 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec light -U 10
-bindsym XF86MonBrightnessDown exec light -A 10
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 
 # DUAL SCREEN SETTING
 # set $1stMonitor DP-1
