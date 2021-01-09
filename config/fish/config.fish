@@ -1,3 +1,7 @@
+# ------------------------------
+# config.fish
+# ------------------------------
+
 # alias settings
 abbr c "cd"
 abbr mk "mkdir -p"
@@ -22,3 +26,7 @@ set -U npm_config_prefix $HOME/.npm
 set -U fish_user_paths /usr/local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.npm/bin $fish_user_paths
 set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
+
+# go
+set -x GOPATH $HOME
+set -x PATH $GOPATH/bin $PATH
