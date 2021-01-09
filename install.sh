@@ -9,16 +9,24 @@
 #  ln -svf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 #done
 
-echo '* anyenv install *'
-git clone https://github.com/anyenv/anyenv ~/.anyenv
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zshrc
-mkdir -p ~/.anyenv/plugins
-git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
+#echo '* anyenv install *'
+#git clone https://github.com/anyenv/anyenv ~/.anyenv
+#echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zshrc
+#mkdir -p ~/.anyenv/plugins
+#git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
+#
+#~/.anyenv/bin/anyenv init
+#anyenv install --init
+#
+#echo '* Starship install *'
+#sudo mkdir -p /usr/local
+#sudo mkdir -p /usr/local/bin
+#curl -fsSlL https://starship.rs/install.sh | bash
 
-~/.anyenv/bin/anyenv init
-anyenv install --init
+echo 'call unlink.sh * start *'
+sh ./unlink.sh
+echo 'call unlink.sh * success *'
 
-echo '* Starship install *'
-sudo mkdir -p /usr/local
-sudo mkdir -p /usr/local/bin
-curl -fsSlL https://starship.rs/install.sh | bash
+echo 'call symlink.sh * start *'
+sh ./symlink.sh
+echo 'call symlink.sh * success *'

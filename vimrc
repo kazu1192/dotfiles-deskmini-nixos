@@ -133,7 +133,8 @@ if has('unix')
   endif
 endif
 
-source ~/.vim/vimrc.dein
+" source ~/.vim/vimrc.dein
+source ~/.vim/vimrc.vim-plug
 source ~/.vim/vimrc.plugins
 source ~/.vim/vimrc.cmds
 source ~/.vim/vimrc.maps
