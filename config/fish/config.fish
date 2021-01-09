@@ -26,6 +26,7 @@ set -U npm_config_prefix $HOME/.npm
 set -U fish_user_paths /usr/local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.npm/bin $fish_user_paths
 set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
+set -U fish_user_paths $HOME/.bin $fish_user_paths
 
 # go
 set -x GOPATH $HOME
