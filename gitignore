@@ -32,6 +32,8 @@ Session.vim
 .vim/ftdetect/Dockerfile.vim
 .vim/syntax/Dockerfile.vim
 .vim/snippets/
+vim/autoload
+vim/plugged
 
 # Xcode
 build/
