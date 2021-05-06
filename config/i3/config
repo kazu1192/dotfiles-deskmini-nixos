@@ -16,6 +16,7 @@ $ex nitrogen --restore
 $ex nm-applet
 $ex picom -b
 $ex fcitx
+$ex blueman-applet
 # $ex psensor
 # $ex redshift-gtk
 $ex bash ${HOME}/.bin/run_xset
