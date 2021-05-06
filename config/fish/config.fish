@@ -6,8 +6,8 @@
 abbr c "cd"
 abbr mk "mkdir -p"
 abbr cl "clear"
-abbr vi "nvim"
-abbr vim "nvim"
+abbr vi "vim"
+# abbr vim "nvim"
 abbr g "git"
 abbr pacman "sudo pacman"
 abbr rs "rsync -ahv --progress"
@@ -31,3 +31,7 @@ set -U fish_user_paths $HOME/.bin $fish_user_paths
 # go
 set -x GOPATH $HOME
 set -x PATH $GOPATH/bin $PATH
+
+# n
+set -x N_PREFIX $HOME/.n
+set -U fish_user_paths $N_PREFIX/bin $fish_user_paths
