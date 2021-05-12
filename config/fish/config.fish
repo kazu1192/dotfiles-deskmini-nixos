@@ -18,6 +18,8 @@ abbr dono "sudo docker run --rm -it --user node -v PWD:/app node_dev"
 abbr doc "sudo docker-compose"
 abbr docr "sudo docker-compose run --rm --service-ports"
 
+alias ide "~/.bin/ide.sh"
+
 # fzf settings
 set -U FZF_LEGACY_KEYBINDINGS 0
 set -U npm_config_prefix $HOME/.npm
