@@ -14,7 +14,7 @@ $ex volumeicon
 $ex dunst
 $ex nitrogen --restore
 $ex nm-applet
-$ex picom -b
+# $ex picom -b
 $ex fcitx
 $ex blueman-applet
 # $ex psensor

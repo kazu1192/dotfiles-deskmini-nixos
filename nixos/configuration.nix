@@ -70,6 +70,7 @@
       noto-fonts-emoji
       fira-code
       fira-code-symbols
+      font-awesome
     ];
   };
 
@@ -89,7 +90,7 @@
     cmake gcc gnumake nodejs 
     git tig ghq gitAndTools.hub
     fzf peco
-    wget neovim tmux unzip
+    wget vim neovim tmux unzip
     exa bat fd procs ripgrep
     termite alacritty terminator
     zsh starship fish screenfetch
