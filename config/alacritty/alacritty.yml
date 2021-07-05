@@ -3,8 +3,7 @@
 # ------------------------------
 
 shell:
-  # program: usr/bin/fish
-  program: /home/host/.bin/fish_wrapper.sh
+   program: /usr/bin/zsh
 
 env:
   #  TERM: alacritty
