@@ -15,14 +15,6 @@ HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
-# PATH Settings
-export JAVA_HOME=/usr/lib/jvm/default
-export PATH=/usr/local/shell:$PATH
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$HOME/.anyenv/bin:$PATH
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-
 # ALIAS Settings
 alias la='ls -a'
 alias ll='ls -lh'
@@ -56,31 +48,39 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-zinit-zsh/z-a-patch-dl \
-zinit-zsh/z-a-as-monitor \
-zinit-zsh/z-a-bin-gem-node
+  zinit-zsh/z-a-rust \
+  zinit-zsh/z-a-as-monitor \
+  zinit-zsh/z-a-patch-dl \
+  zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
-zplugin light "zsh-users/zsh-completions"
-zplugin ice wait"!0" atload"_zsh_autosuggest_start"
-zplugin light "zsh-users/zsh-autosuggestions"
-zplugin light "mafredri/zsh-async"
-# zplugin light "sindresorhus/pure"
-zplugin ice wait"!0" atinit"zpcompinit; zpcdreplay"
-zplugin ice wait'!0'; zplugin light "vintersnow/anyframe"
-zplugin ice wait'!0'; zplugin light "b4b4r07/enhancd"
-zplugin light "zsh-users/zsh-syntax-highlighting"
+# zinit plugins
 
-# zplugin end
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit load zdharma/history-search-multi-word
+
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+zinit load agkozak/zsh-z
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+
+# Load pure theme
+zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+zinit light sindresorhus/pure
+
+# other
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# export settings
+export JAVA_HOME=/usr/lib/jvm/default
+export PATH=/usr/local/shell:$PATH
+export PATH=$JAVA_HOME/bin:$PATH
 
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
-## neovim init and install
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
-
-eval "$(starship init zsh)"
