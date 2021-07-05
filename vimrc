@@ -1,7 +1,6 @@
 " --------------------
 "       vimrc
 " --------------------
-" (respect craftzdog)
 
 " init autocmd
 autocmd!
@@ -103,7 +102,6 @@ set completeopt-=preview
 " --------------------
 " Cursor line
 " --------------------
-
 set cursorline
 
 " Set cursor line color on visual mode
@@ -124,15 +122,6 @@ endif
 " --------------------
 " imports
 " --------------------
-
-if has('unix')
-  let s:uname = system("uname -s")
-  " Do Mac stuff
-  if s:uname == "Darwin\n"
-    source ~/.vim/vimrc.osx
-  endif
-endif
-
 " source ~/.vim/vimrc.dein
 source ~/.vim/vimrc.plugins
 source ~/.vim/vimrc.cmds
@@ -141,7 +130,6 @@ source ~/.vim/vimrc.maps
 " --------------------
 " Color scheme
 " --------------------
-
 syntax enable
 set background=dark
 colorscheme iceberg

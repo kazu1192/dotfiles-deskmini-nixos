@@ -1,8 +1,8 @@
 [user]
-	email = kazu1192@protonmail.com
-	name = kazu1192
+  email = kazu1192@protonmail.com
+  name = kazu1192
 [core]
-	editor = vim
+  editor = vim
   excludesfile = ~/.gitignore
 [color]
   status = auto
