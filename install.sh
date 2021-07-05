@@ -24,9 +24,9 @@
 #curl -fsSlL https://starship.rs/install.sh | bash
 
 echo 'call unlink.sh * start *'
-sh ./unlink.sh
+sh ${HOME}/.dotfiles/unlink.sh
 echo 'call unlink.sh * success *'
 
 echo 'call symlink.sh * start *'
-sh ./symlink.sh
+sh ${HOME}/.dotfiles/symlink.sh
 echo 'call symlink.sh * success *'
