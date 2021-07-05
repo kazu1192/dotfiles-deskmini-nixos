@@ -14,7 +14,7 @@ $ex volumeicon
 $ex dunst
 $ex nitrogen --restore
 $ex nm-applet
-# $ex picom -b
+$ex picom -b --config ${HOME}/.config/picom/picom.conf
 $ex fcitx
 $ex blueman-applet
 # $ex psensor
@@ -26,6 +26,7 @@ $ex bash ${HOME}/.bin/run_xset
 # KEY BIND
 floating_modifier $mod
 # bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec termite --exec=$HOME/.bin/fish_wrapper.sh
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -show drun"
