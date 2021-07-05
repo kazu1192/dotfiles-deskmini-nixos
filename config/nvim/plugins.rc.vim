@@ -2,18 +2,17 @@
 " vim-plug
 " --------------------
 
-if has('vim') && empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-elseif has('nvim') && empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs 
+let s:plug_dir = expand('$DATA/nvim/site/autoload')
+
+if !isdirectory(s:plug_dir)
+	silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs 
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.local/share/plugged')
+call plug#begin('$DATA/plugged')
 
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -59,6 +58,8 @@ call plug#end()
 " --------------------
 " Plugins setting
 " --------------------
+" fugitive
+cnoreabbrev gopen Gbrowse
 
 " vim-go
 let g:go_disable_autoinstall = 1
