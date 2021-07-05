@@ -11,7 +11,7 @@ unlink ~/.bashrc
 unlink ~/.bash_profile
 
 unlink ~/.zshrc
-unlink ~/.zprofile
+unlink ~/.zplug.zsh
 
 unlink ~/.vim
 unlink ~/.vimrc

@@ -11,7 +11,7 @@ ln -snv $SCRIPT_DIR/bashrc ~/.bashrc
 ln -snv $SCRIPT_DIR/bash_profile ~/.bash_profile
 
 ln -snv $SCRIPT_DIR/zshrc ~/.zshrc
-ln -snv $SCRIPT_DIR/zprofile ~/.zprofile
+ln -snv $SCRIPT_DIR/zplug.zsh ~/.zplug.zsh
 
 ln -snv $SCRIPT_DIR/vim ~/.vim
 ln -snv $SCRIPT_DIR/vimrc ~/.vimrc
