@@ -1,0 +1,191 @@
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+" lightline.vim
+" 左は静的情報(mode, filetype, encode)
+" 右は動的情報(git, syntax, line)
+let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'tab':{
+            \ 'active': [ 'tabnum', 'filename', 'modified' ],
+            \ 'inactive': [ 'tabnum', 'filename', 'modified' ]
+        \ },
+        \ 'tabline': {
+            \ 'left': [ [ 'tabs' ] ],
+        \ },
+        \ 'active': {
+        \   'left': [
+        \     ['mode', 'paste'],
+        \     ['filename'],
+        \     ['filetype', 'fileencoding', 'fileformat'],
+        \   ],
+        \   'right': [
+        \     [ 'linter_checking', 'linter_errors',
+        \       'linter_warnings', 'linter_ok' ],
+        \     ['percent', 'lineinfo'],
+        \     ['pyenv','fugitive', 'gitgutter' ],
+        \   ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode',
+        \   'pyenv': 'MyPyenvVersion',
+        \   'syntastic': 'SyntasticStatuslineFlag',
+        \   'charcode': 'MyCharCode',
+        \   'gitgutter': 'MyGitGutter'
+        \ },
+        \ 'separator': {'left': '', 'right': ''},
+        \ 'subseparator': {'left': '', 'right': ''},
+        \ }
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
+endfunction
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      let _ = fugitive#head()
+      return strlen(_) ? ' '._ : ''
+      " return strlen(_) ? '⎇ '._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+function! MyFileformat()
+  return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+function! MyFiletype()
+  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+function! MyFileencoding()
+  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+function! MyMode()
+  return winwidth('.') > 60 ? lightline#mode() : ''
+endfunction
+if executable('pyenv')
+    function! MyPyenvVersion()
+    " systemかbuiltin以外のPyenvでenv nameを返す
+      let env = pyenv#info#preset('short')[1:]
+      if env == 'system' || env == 'builtin'
+        return ''
+      else
+        return '⌘ '.env
+      endif
+    endfunction
+endif
+function! MyGitGutter()
+  if ! exists('*GitGutterGetHunkSummary')
+        \ || ! get(g:, 'gitgutter_enabled', 0)
+        \ || winwidth('.') <= 90
+    return ''
+  endif
+  let symbols = [
+        \ g:gitgutter_sign_added . ' ',
+        \ g:gitgutter_sign_modified . ' ',
+        \ g:gitgutter_sign_removed . ' '
+        \ ]
+  let hunks = GitGutterGetHunkSummary()
+  let ret = []
+  for i in [0, 1, 2]
+    if hunks[i] > 0
+      call add(ret, symbols[i] . hunks[i])
+    endif
+  endfor
+  return join(ret, ' ')
+endfunction
+" https://github.com/Lokaltog/vim-powerline/blob/develop/autoload/Powerline/Functions.vim
+function! MyCharCode()
+  if winwidth('.') <= 70
+    return ''
+  endif
+  " Get the output of :ascii
+  redir => ascii
+  silent! ascii
+  redir END
+  if match(ascii, 'NUL') != -1
+    return 'NUL'
+  endif
+  " Zero pad hex values
+  let nrformat = '0x%02x'
+  let encoding = (&fenc == '' ? &enc : &fenc)
+  if encoding == 'utf-8'
+    " Zero pad with 4 zeroes in unicode files
+    let nrformat = '0x%04x'
+  endif
+  " Get the character and the numeric value from the return value of :ascii
+  " This matches the two first pieces of the return value, e.g.
+  " "<F>  70" => char: 'F', nr: '70'
+  let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
+  " Format the numeric value
+  let nr = printf(nrformat, nr)
+  return "'". char ."' ". nr
+endfunction
+'''
+
+[[plugins]] # Display ALE status on status line
+repo = 'maximbaz/lightline-ale'
+depends = 'lightline.vim'
+hook_add = '''
+    let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+    let g:lightline.component_type = {
+      \  'linter_checking': 'left',
+      \  'linter_warnings': 'warning',
+      \  'linter_errors': 'error',
+      \  'linter_ok': 'left',
+      \ }
+    let g:lightline#ale#indicator_errors = '⨉: '
+    let g:lightline#ale#indicator_warnings = '⚠ : '
+'''
+
+[[plugins]] # bufferline
+repo = 'mgee/lightline-bufferline'
+depends = 'lightline.vim'
+hook_add = '''
+    set showtabline=2  " Always show tabline & bufferline
+    " Overwrite lighline#tabline
+    let g:lightline.tabline = {'left': [['buffers']], 'right': [['tabs']]}
+    let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers'
+    let g:lightline.component_type.buffers = 'tabsel'
+    " Buffer line setting
+    let g:lightline#bufferline#unnamed = '[No Name]'
+    let g:lightline#bufferline#show_number = 2
+    let g:lightline#bufferline#number_map =
+                                \ {0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+                                \  5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+    " Keymaps
+    " Jump to buffer number
+    nmap ]1 <Plug>lightline#bufferline#go(1)
+    nmap ]2 <Plug>lightline#bufferline#go(2)
+    nmap ]3 <Plug>lightline#bufferline#go(3)
+    nmap ]4 <Plug>lightline#bufferline#go(4)
+    nmap ]5 <Plug>lightline#bufferline#go(5)
+    nmap ]6 <Plug>lightline#bufferline#go(6)
+    nmap ]7 <Plug>lightline#bufferline#go(7)
+    nmap ]8 <Plug>lightline#bufferline#go(8)
+    nmap ]9 <Plug>lightline#bufferline#go(9)
+    nmap ]0 <Plug>lightline#bufferline#go(10)
+'''
