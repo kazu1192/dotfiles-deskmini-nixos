@@ -4,25 +4,25 @@
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-unlink ~/.bin
-unlink ~/.config
+unlink $HOME/.bin
+unlink $HOME/.config
 
-unlink ~/.bashrc
-unlink ~/.bash_profile
+unlink $HOME/.bashrc
+unlink $HOME/.bash_profile
 
-unlink ~/.zshrc
-unlink ~/.zplug.zsh
+unlink $HOME/.zshrc
+unlink $HOME/.zplug.zsh
 
-unlink ~/.vim
-unlink ~/.vimrc
+unlink $HOME/.vim
+unlink $HOME/.vimrc
 
-unlink ~/.tigrc
+unlink $HOME/.tigrc
 
-unlink ~/.gitconfig
-unlink ~/.gitignore
+unlink $HOME/.gitconfig
+unlink $HOME/.gitignore
 
-unlink ~/.tmux.conf
+unlink $HOME/.tmux.conf
 
-unlink ~/.xinitrc
+unlink $HOME/.xinitrc
 
-unlink ~/.npmrc
+unlink $HOME/.npmrc
