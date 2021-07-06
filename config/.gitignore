@@ -13,6 +13,7 @@ anyenv
 !/termite/**
 !/terminator/**
 !/nvim/**
+!/dein/**
 !/fish/config.fish
 !/redshift.conf
 
