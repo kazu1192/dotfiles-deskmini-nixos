@@ -47,14 +47,6 @@ if [[ -f ${HOME}/.zplug/init.zsh ]]; then
   export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
   source ~/.zplug/init.zsh
 
-  # Auto installer
-  if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
-  fi
-
   zplug load
 
 else; printf "Install zplug? [y/N]: "
