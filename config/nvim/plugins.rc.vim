@@ -2,13 +2,6 @@
 " vim-plug
 " --------------------
 
-let s:plug_dir = expand('$DATA/nvim/site/autoload')
-
-if !isdirectory(s:plug_dir)
-	silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs 
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
-
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
