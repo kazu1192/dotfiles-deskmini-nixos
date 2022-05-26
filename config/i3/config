@@ -28,7 +28,7 @@ floating_modifier $mod
 # bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec termite --exec=$HOME/.bin/fish_wrapper.sh
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+q kill
+bindsym $mod+Control+q kill
 bindsym $mod+d exec "rofi -show drun"
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -48,15 +48,15 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 bindsym $mod+z split h
 bindsym $mod+x split v
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+f fullscreen toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+# bindsym $mod+Shift+r restart
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
@@ -76,28 +76,28 @@ bindsym XF86MonBrightnessDown exec light -U 10
 # workspace 10 output $2ndMonitor
 
 # SWITCH TO WORKSPACE
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+q workspace q
+bindsym $mod+w workspace w
+bindsym $mod+e workspace e
+bindsym $mod+r workspace r
+bindsym $mod+t workspace t
+bindsym $mod+y workspace y
+bindsym $mod+u workspace u
+bindsym $mod+i workspace i
+bindsym $mod+o workspace o
+bindsym $mod+p workspace p
 
 # MOVE FOCUSED CONTAINER TO WORKSPACE
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+q move container to workspace q
+bindsym $mod+Shift+w move container to workspace w
+bindsym $mod+Shift+e move container to workspace e
+bindsym $mod+Shift+r move container to workspace r
+bindsym $mod+Shift+t move container to workspace t
+bindsym $mod+Shift+y move container to workspace y
+bindsym $mod+Shift+u move container to workspace u
+bindsym $mod+Shift+i move container to workspace i
+bindsym $mod+Shift+o move container to workspace o
+bindsym $mod+Shift+p move container to workspace p
 
 # RESIZE WINDOW
 mode "resize" {
@@ -109,7 +109,8 @@ mode "resize" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+
+bindsym $mod+Control+r mode "resize"
 
 # WINDOW SETTINGS
 for_window [class="^.*"]               border pixel 0

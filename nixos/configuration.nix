@@ -36,6 +36,18 @@
     networkmanager.enable = true;
   };
 
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    checkReversePath = "loose";
+    allowedTCPPorts = [];
+    allowedUDPPorts = [];
+  };
+
   location = {
     latitude = 35.4;
     longitude = 139.6;
@@ -62,7 +74,7 @@
   };
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       noto-fonts
@@ -85,21 +97,20 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nox pavucontrol ffmpeg
-    gnome3.networkmanagerapplet
+    nox nixos-option
+    pavucontrol ffmpeg
+    networkmanagerapplet
     cmake gcc gnumake nodejs 
-    git tig ghq gitAndTools.hub
-    fzf peco
-    wget vim neovim tmux unzip
+    git gh tig ghq gitAndTools.hub
+    fzf peco vim neovim tmux zellij
+    wget zip unzip
     exa bat fd procs ripgrep
     termite alacritty terminator
     zsh starship fish screenfetch
     rofi conky nitrogen picom
     dunst parcellite volumeicon
     chromium firefox vivaldi
-    # dropbox - we don't need this in the environment. systemd unit pulls it in
-    # dropbox-cli
-    # xorg.xbacklight
+    tailscale
   ];
 
   environment.pathsToLink = [ "/libexec" ];
@@ -112,24 +123,23 @@
   #   enableSSHSupport = true;
   #   pinentryFlavor = "gnome3";
   # };
-  programs.ssh.askPassword = "";
+
   programs.light.enable = true;
+
+  programs.java.enable = true;
+
+  programs.adb.enable = true;
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  networking.firewall = {
+  services.openssh = {
     enable = true;
-    allowedTCPPorts = [ 17500 ];
-    allowedUDPPorts = [ 17500 ];
+    ports = [2002];
+    passwordAuthentication = false;
+    permitRootLogin = "no";
   };
+  # programs.ssh.askPassword = "";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -137,6 +147,10 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Enable bluetooth.
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -202,6 +216,8 @@
 
   security.sudo.enable = true;
 
+  services.tailscale.enable = true;
+
   virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -210,33 +226,41 @@
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   # };
 
-  users.motd = "[0m[34m          ::::.    [0m[1;34m':::::     ::::'          [0m[1;34m root[0m[1m@[0m[0m[1;34mnixox[0m\n[0m[34m          ':::::    [0m[1;34m':::::.  ::::'           [0m[1;34m OS:[0m NixOS 20.09.2181.3a02dc9edb2 (Nightingale)[0m\n[0m[34m            :::::     [0m[1;34m'::::.:::::            [0m[1;34m Kernel:[0m x86_64 Linux 5.4.81[0m\n[0m[34m      .......:::::..... [0m[1;34m::::::::             [0m[1;34m Uptime:[0m 10m[0m\n[0m[34m     ::::::::::::::::::. [0m[1;34m::::::    [0m[34m::::.     [0m[1;34m Packages:[0m 6690[0m\n[0m[34m    ::::::::::::::::::::: [0m[1;34m:::::.  [0m[34m.::::'     [0m[1;34m Shell:[0m bash 4.4.23[0m\n[0m[1;34m           .....           ::::' [0m[34m:::::'      [0m[1;34m Resolution:[0m 1920x1080[0m\n[0m[1;34m          :::::            '::' [0m[34m:::::'       [0m[1;34m WM:[0m i3[0m\n[0m[1;34m ........:::::               ' [0m[34m:::::::::::.  [0m[1;34m Disk:[0m 46G / 110G (45%)[0m\n[0m[1;34m:::::::::::::                 [0m[34m:::::::::::::  [0m[1;34m CPU:[0m Intel Core i3-8145U @ 4x 3.9GHz [63.0°C][0m\n[0m[1;34m ::::::::::: [0m[34m..              :::::           [0m[1;34m GPU:[0m Intel Corporation UHD Graphics 620 (Whiskey Lake)[0m\n[0m[1;34m     .::::: [0m[34m.:::            :::::            [0m[1;34m RAM:[0m 1414MiB / 3612MiB[0m\n[0m[1;34m    .:::::  [0m[34m:::::          '''''    [0m[1;34m.....    [0m\n[0m[1;34m    :::::   [0m[34m':::::.  [0m[1;34m......:::::::::::::'    [0m\n[0m[1;34m     :::     [0m[34m::::::. [0m[1;34m':::::::::::::::::'     [0m\n[0m[34m            .:::::::: [0m[1;34m'::::::::::            [0m\n[0m[34m           .::::''::::.     [0m[1;34m'::::.           [0m\n[0m[34m          .::::'   ::::.     [0m[1;34m'::::.          [0m\n[0m[34m         .::::      ::::      [0m[1;34m'::::.         [0m";
+  users.motd = "Hello NixOS!";
 
   users.users.host = {
     isNormalUser = true;
     createHome = true;
     group = "users";
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
-    shell = pkgs.bash;
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "adbusers" ];
+    shell = pkgs.zsh;
     uid = 1000;
   };
 
-  systemd.user.services.dropbox = {
-    description = "Dropbox";
-    wantedBy = [ "graphical-session.target" ];
-    environment = {
-      QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
-      QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
-    };
-    serviceConfig = {
-      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-      KillMode = "control-group"; # upstream recommends process
-      Restart = "on-failure";
-      privateTmp = true;
-      ProtectSystem = "full";
-      Nice = 10;
-    };
+# systemd.user.services.dropbox = {
+#   description = "Dropbox";
+#   wantedBy = [ "graphical-session.target" ];
+#   environment = {
+#     QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
+#     QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
+#   };
+#   serviceConfig = {
+#     ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+#     ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+#     KillMode = "control-group"; # upstream recommends process
+#     Restart = "on-failure";
+#     privateTmp = true;
+#     ProtectSystem = "full";
+#     Nice = 10;
+#   };
+# };
+  
+  xdg.mime.defaultApplications = {
+    "text/html" = "firefox.desktop";
+    "x-scheme-handler/http" = "firefox.desktop";
+    "x-scheme-handler/https" = "firefox.desktop";
+    "x-scheme-handler/about" = "firefox.desktop";
+    "x-scheme-handler/unknown" = "firefox.desktop";
   };
 
   # This value determines the NixOS release from which the default
@@ -245,7 +269,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }
 

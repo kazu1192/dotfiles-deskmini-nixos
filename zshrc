@@ -28,18 +28,10 @@ setopt correct
 autoload -Uz compinit && compinit
 
 # alias settings
-alias la='ls -a'
-alias ll='ls -lh'
-alias lla='ls -lah'
+alias la='ls -la'
 alias x='exa'
 alias xa='exa -a'
-alias xl='exa -lh --git'
-alias xla='exa -lah --git'
 alias less='less -R'
-alias grep='grep less'
-alias rm='rm -i'
-alias mkdir='mkdir -p'
-alias ..='cd ../'
 alias diff='diff -U1'
 
 # Load zplug

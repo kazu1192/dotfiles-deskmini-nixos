@@ -13,8 +13,8 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-rhubarb'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -60,13 +60,6 @@ let g:go_disable_autoinstall = 1
 " vim-json
 let g:vim_json_syntax_conceal = 0
 
-" Status line
-if !exists('*fugitive#statusline')
-  set statusline=%F\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[L%l/%L,C%03v]
-  set statusline+=%=
-  set statusline+=%{fugitive#statusline()}
-endif
-
 " JSX
 let g:jsx_ext_required = 0
 
@@ -78,10 +71,7 @@ let g:lightline = {
 \   'colorscheme': 'wombat',
 \   'active': {
 \     'left': [ [ 'mode', 'paste' ],
-\               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-\   },
-\   'component_function': {
-\     'gitbranch': 'fugitive#head'
+\               [ 'readonly', 'filename', 'modified' ] ]
 \   },
 \ }
 

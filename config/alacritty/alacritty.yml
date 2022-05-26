@@ -3,7 +3,7 @@
 # ------------------------------
 
 shell:
-   program: /usr/bin/zsh
+   program: /run/current-system/sw/bin/zsh
 
 env:
   #  TERM: alacritty
@@ -77,5 +77,7 @@ schemes:
       cyan:    '#73cef4'
       white:   '#feffff'
 
+window:
+  opacity: 0.90
+
 colors: *tender
-background_opacity: 0.90
