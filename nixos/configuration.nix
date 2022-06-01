@@ -97,20 +97,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nox nixos-option
+    nixos-option
     pavucontrol ffmpeg
     networkmanagerapplet
     cmake gcc gnumake nodejs 
-    git gh tig ghq gitAndTools.hub
-    fzf peco vim neovim tmux zellij
+    git gh tig ghq
+    vim neovim tmux zellij
     wget zip unzip
     exa bat fd procs ripgrep
+    fzf peco tree
     termite alacritty terminator
     zsh starship fish screenfetch
     rofi conky nitrogen picom
     dunst parcellite volumeicon
     chromium firefox vivaldi
     tailscale
+    apktool android-tools android-studio
+    jetbrains.idea-community
   ];
 
   environment.pathsToLink = [ "/libexec" ];
@@ -232,7 +235,7 @@
     isNormalUser = true;
     createHome = true;
     group = "users";
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" "adbusers" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "adbusers" "plugdev" ];
     shell = pkgs.zsh;
     uid = 1000;
   };
