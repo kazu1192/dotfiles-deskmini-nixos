@@ -1,15 +1,4 @@
-#!/usr/bin/zsh
-
 # .zshrc
-
-# External files
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
-
-if [ -f ~/.zsh_aliases ]; then
-  . ~/.zsh_aliases
-fi
 
 # Options
 autoload -Uz colors && colors
@@ -33,6 +22,28 @@ alias x='exa'
 alias xa='exa -a'
 alias less='less -R'
 alias diff='diff -U1'
+
+# export
+export npm_config_prefix=~/.npm
+export PATH="$HOME/.npm/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# export JAVA_HOME=/usr/lib/jvm/default
+# export PATH=$JAVA_HOME/bin:$PATH
+export PATH=/usr/local/shell:$PATH
+
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+
+# Options to fzf command
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_COMPLETION_OPTS='--border --info=inline'
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
 
 # Load zplug
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
