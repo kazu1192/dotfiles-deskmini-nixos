@@ -114,6 +114,7 @@
     vivaldi-ffmpeg-codecs
     # vivaldi-widevine
     tailscale
+    vscode
     apktool android-tools android-studio
     jetbrains.idea-community
   ];
