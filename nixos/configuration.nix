@@ -111,6 +111,8 @@
     rofi conky nitrogen picom
     dunst parcellite volumeicon
     chromium firefox vivaldi
+    vivaldi-ffmpeg-codecs
+    # vivaldi-widevine
     tailscale
     apktool android-tools android-studio
     jetbrains.idea-community
@@ -205,8 +207,8 @@
       night = "0.8";
     };
     temperature = {
-      day = 6000;
-      night = 5000;
+      day = 5500;
+      night = 3700;
     };
   };
 
