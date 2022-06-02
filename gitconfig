@@ -53,7 +53,7 @@
 	required = true
 	process = git-lfs filter-process
 [ghq]
-  root = ~/.ghq
+	root = ~/ghq
 [push]
 	default = simple
 [credential]

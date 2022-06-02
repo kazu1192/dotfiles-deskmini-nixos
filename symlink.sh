@@ -1,12 +1,11 @@
 #!/bin/sh
-
 # set -eu
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 if [ -d $HOME/.config ]; then
   echo "move $HOME/.config directory"
-  mv $HOME/.config ${SCRIPT_DIR}/.config_tmp
+  mv $HOME/.config $HOME/.config_tmp
 fi
 
 ln -snv ${SCRIPT_DIR}/bin $HOME/.bin

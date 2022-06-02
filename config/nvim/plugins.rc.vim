@@ -13,9 +13,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
-" Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-rhubarb'
-
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
@@ -24,8 +21,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 
 Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 

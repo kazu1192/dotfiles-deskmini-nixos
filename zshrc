@@ -45,6 +45,18 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+# ghq show list for peco
+function peco-src() {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
 # Load zplug
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
   export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
