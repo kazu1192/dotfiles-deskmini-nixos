@@ -7,7 +7,6 @@ if !1 | finish | endif
 
 " view
 set number
-set title
 set relativenumber
 set nowrap
 set showcmd
