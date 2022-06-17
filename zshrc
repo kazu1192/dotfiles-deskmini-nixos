@@ -1,10 +1,36 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # .zshrc
+
+# Load zplug
+if [[ -f ${HOME}/.zplug/init.zsh ]]; then
+  export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
+  source ~/.zplug/init.zsh
+
+  zplug load
+else; printf "Install zplug? [y/N]: "
+  if read -q; then
+    curl -sL --proto-redir -all, https\
+      https://raw.githubusercontent.com/zplug/installer/master/installer.zsh |
+  zsh && source $0
+  fi
+fi
+
+# Source Prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 # Options
 autoload -Uz colors && colors
 bindkey -v
 
-HISTFILE=~/.zhistory
+# HISTFILE=~/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
@@ -57,19 +83,7 @@ function peco-src() {
 zle -N peco-src
 bindkey '^]' peco-src
 
-# Load zplug
-if [[ -f ${HOME}/.zplug/init.zsh ]]; then
-  export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
-  source ~/.zplug/init.zsh
-
-  zplug load
-
-else; printf "Install zplug? [y/N]: "
-  if read -q; then
-    curl -sL --proto-redir -all, https\
-      https://raw.githubusercontent.com/zplug/installer/master/installer.zsh |
-  zsh && source $0
-  fi
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

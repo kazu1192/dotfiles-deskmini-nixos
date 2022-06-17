@@ -1,36 +1,24 @@
 #!/usr/bin/zsh
-
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "b4b4r07/enhancd", use:init.sh
 
-zplug "clvv/fasd", as:command, use:fasd
-
-# history search using ctrl+P/N
-zplug "zsh-users/zsh-history-substring-search", defer:3
-if zplug check "zsh-users/zsh-history-substring-search"; then
-  bindkey '^P' history-substring-search-up
-  bindkey '^N' history-substring-search-down
-fi
-
-# git
-zplug "plugins/git", from:oh-my-zsh
-zplug "peterhurford/git-aliases.zsh"
-
-# syntax highlighting in shell command
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
 # Auto completions
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions",\
-    defer:2,\
-    hook-load:'compdef _pacman powerpill=pacman',\
-    hook-load:'compdef _apt apt-fast=apt'
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-zplug "mafredri/zsh-async",\
-  from:github
+zplug "plugins/git", from:oh-my-zsh
 
-zplug "sindresorhus/pure",\
-  use:pure.zsh,\
-  from:github,\
-  as:theme
+# zsh framework
+zplug "sorin-ionescu/prezto"
+# prezto plugins
+zplug "modules/environment", from:prezto
+zplug "modules/terminal", from:prezto
+zplug "modules/editor", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/spectrum", from:prezto
+zplug "modules/utility", from:prezto
+zplug "modules/completion", from:prezto
+zplug "modules/prompt", from:prezto
