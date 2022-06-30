@@ -18,7 +18,7 @@ $ex picom -b --config ${HOME}/.config/picom/picom.conf
 $ex fcitx
 $ex blueman-applet
 # $ex psensor
-# $ex redshift-gtk
+$ex redshift-gtk
 $ex bash ${HOME}/.bin/run_xset
 # $ex bash ${HOME}/.bin/run_xrandr
 # $ex bash .screenlayout/arandr.sh

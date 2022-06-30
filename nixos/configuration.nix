@@ -48,11 +48,6 @@
     allowedUDPPorts = [];
   };
 
-  location = {
-    latitude = 35.4;
-    longitude = 139.6;
-  };
-
   # Select internationalisation properties.
   # i18n = {
   #   consoleFont = "Lat2-Terminus16";
@@ -181,8 +176,8 @@
     };
 
     displayManager = {
-      # sddm.enable = true;
-      # startx.enable = true;
+      sddm.enable = true;
+      startx.enable = true;
       defaultSession = "none+i3";
     };
 
@@ -200,17 +195,23 @@
     };
   };
 
+  location.provider = "manual";
+  location.latitude = 35.4;
+  location.longitude = 139.6;
+
   services.redshift = {
     enable = true;
     brightness = {
-      # Note the string values below.
       day = "1";
       night = "0.8";
     };
     temperature = {
       day = 5500;
-      night = 3700;
+      night = 3500;
     };
+    extraOptions = [
+      "-m randr"
+    ];
   };
 
   services.cron = {
@@ -275,7 +276,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 
 }
 
