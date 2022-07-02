@@ -10,7 +10,7 @@ env:
   TERM: xterm-256color
 
 font:
-  size: 19.5
+  size: 14.5
   normal:
     family: Fira Code
   bold:

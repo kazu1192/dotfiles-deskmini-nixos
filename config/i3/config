@@ -20,6 +20,8 @@ $ex blueman-applet
 # $ex psensor
 $ex redshift-gtk
 $ex bash ${HOME}/.bin/run_xset
+$ex nitrogen ${HOME}/ghq/github.com/NixOS/nixos-artwork/wallpapers/nix-wallpaper-nineish-dark-gray.png --set-scaled
+# $ex psensor
 # $ex bash ${HOME}/.bin/run_xrandr
 # $ex bash .screenlayout/arandr.sh
 
@@ -88,16 +90,16 @@ bindsym $mod+o workspace o
 bindsym $mod+p workspace p
 
 # MOVE FOCUSED CONTAINER TO WORKSPACE
-bindsym $mod+Shift+q move container to workspace q
-bindsym $mod+Shift+w move container to workspace w
-bindsym $mod+Shift+e move container to workspace e
-bindsym $mod+Shift+r move container to workspace r
-bindsym $mod+Shift+t move container to workspace t
-bindsym $mod+Shift+y move container to workspace y
-bindsym $mod+Shift+u move container to workspace u
-bindsym $mod+Shift+i move container to workspace i
-bindsym $mod+Shift+o move container to workspace o
-bindsym $mod+Shift+p move container to workspace p
+bindsym $mod+Control+q move container to workspace q
+bindsym $mod+Control+w move container to workspace w
+bindsym $mod+Control+e move container to workspace e
+bindsym $mod+Control+r move container to workspace r
+bindsym $mod+Control+t move container to workspace t
+bindsym $mod+Control+y move container to workspace y
+bindsym $mod+Control+u move container to workspace u
+bindsym $mod+Control+i move container to workspace i
+bindsym $mod+Control+o move container to workspace o
+bindsym $mod+Control+p move container to workspace p
 
 # RESIZE WINDOW
 mode "resize" {
@@ -110,7 +112,7 @@ mode "resize" {
   bindsym Escape mode "default"
 }
 
-bindsym $mod+Control+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 
 # WINDOW SETTINGS
 for_window [class="^.*"]               border pixel 0
