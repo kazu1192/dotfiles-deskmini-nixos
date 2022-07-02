@@ -53,11 +53,11 @@
 	required = true
 	process = git-lfs filter-process
 [ghq]
-  root = ~/.ghq
+	root = ~/ghq
 [push]
 	default = simple
 [credential]
-	helper = cache --timeout=86400
+	helper = store
 [pull]
 	rebase = true
 [init]

@@ -1,21 +1,24 @@
-#!/usr/bin/zsh
-
 # .zshrc
 
-# External files
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
+# Load zplug
+if [[ -f ${HOME}/.zplug/init.zsh ]]; then
+  export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
+  source ~/.zplug/init.zsh
 
-if [ -f ~/.zsh_aliases ]; then
-  . ~/.zsh_aliases
+  zplug load
+else; printf "Install zplug? [y/N]: "
+  if read -q; then
+    curl -sL --proto-redir -all, https\
+      https://raw.githubusercontent.com/zplug/installer/master/installer.zsh |
+  zsh && source $0
+  fi
 fi
 
 # Options
 autoload -Uz colors && colors
 bindkey -v
 
-HISTFILE=~/.zhistory
+# HISTFILE=~/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
@@ -28,33 +31,44 @@ setopt correct
 autoload -Uz compinit && compinit
 
 # alias settings
-alias la='ls -a'
-alias ll='ls -lh'
-alias lla='ls -lah'
+alias la='ls -la'
 alias x='exa'
 alias xa='exa -a'
-alias xl='exa -lh --git'
-alias xla='exa -lah --git'
 alias less='less -R'
-alias grep='grep less'
-alias rm='rm -i'
-alias mkdir='mkdir -p'
-alias ..='cd ../'
 alias diff='diff -U1'
 
-# Load zplug
-if [[ -f ${HOME}/.zplug/init.zsh ]]; then
-  export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
-  source ~/.zplug/init.zsh
+# export
+export npm_config_prefix=~/.npm
+export PATH="$HOME/.npm/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-  zplug load
+# export JAVA_HOME=/usr/lib/jvm/default
+# export PATH=$JAVA_HOME/bin:$PATH
+export PATH=/usr/local/shell:$PATH
 
-else; printf "Install zplug? [y/N]: "
-  if read -q; then
-    curl -sL --proto-redir -all, https\
-      https://raw.githubusercontent.com/zplug/installer/master/installer.zsh |
-  zsh && source $0
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+
+# Options to fzf command
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_COMPLETION_OPTS='--border --info=inline'
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+# ghq show list for peco
+function peco-src() {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
   fi
-fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
