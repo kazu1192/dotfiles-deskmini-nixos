@@ -1,5 +1,5 @@
 [global_config]
-  title_font = Fira Code Medium 14
+  title_font = Fira Code 14
 [keybindings]
 [profiles]
   [[default]]
@@ -8,7 +8,7 @@
     background_darkness = 0.85
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = Fira Code Medium 14
+    font = Fira Code 18.5
     foreground_color = "#ebdbb2"
     palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     use_system_font = False

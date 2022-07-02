@@ -24,7 +24,7 @@ ln -snv ${SCRIPT_DIR}/vimrc $HOME/.vimrc
 ln -snv ${SCRIPT_DIR}/tigrc $HOME/.tigrc
 
 ln -snv ${SCRIPT_DIR}/gitconfig $HOME/.gitconfig
-ln -snv ${SCRIPT_DIR}/gitignore $HOME/.gitignore
+ln -snv ${SCRIPT_DIR}/.gitignore $HOME/.gitignore
 
 ln -snv ${SCRIPT_DIR}/tmux.conf $HOME/.tmux.conf
 
