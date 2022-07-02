@@ -24,10 +24,26 @@ exec redshift
 exec dbus-sway-environment
 exec configure-gtk
 # exec "sleep 3; picom -b --config ~/.config/picom/picom.conf"
-# exec_always "sh -c 'sleep 3; ~/.bin/wayvnc_run.sh'"
 # exec psensor
 # exec bash ${HOME}/.bin/run_xrandr
 # exec bash .screenlayout/arandr.sh
+
+exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
+
+# set output & scaling
+output HDMI-A-1 {
+  res 1920x1080
+  scale 1
+}
+
+# set virtual output (wayvnc server)
+output HEADLESS-1 {
+  res 1920x1080
+  scale 1
+}
+
+# set wallpaper
+output "*" background ~/ghq/github.com/NixOS/nixos-artwork/wallpapers/nix-wallpaper-nineish-dark-gray.png fill
 
 # KEY BIND
 floating_modifier $mod
@@ -77,18 +93,18 @@ bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 
 # DUAL SCREEN SETTING
-# set $1stMonitor DP-1
-# set $2ndMonitor HDMI-1
-# workspace 1 output $1stMonitor
-# workspace 2 output $1stMonitor
-# workspace 3 output $1stMonitor
-# workspace 4 output $1stMonitor
-# workspace 5 output $1stMonitor
-# workspace 6 output $2ndMonitor
-# workspace 7 output $2ndMonitor
-# workspace 8 output $2ndMonitor
-# workspace 9 output $2ndMonitor
-# workspace 10 output $2ndMonitor
+set $1stMonitor HDMI-A-1
+set $2ndMonitor HEADLESS-1
+workspace q output $1stMonitor
+workspace w output $1stMonitor
+workspace e output $1stMonitor
+workspace r output $1stMonitor
+workspace t output $1stMonitor
+workspace y output $2ndMonitor
+workspace u output $2ndMonitor
+workspace i output $2ndMonitor
+workspace o output $2ndMonitor
+workspace p output $2ndMonitor
 
 # SWITCH TO WORKSPACE
 bindsym $mod+q workspace q
