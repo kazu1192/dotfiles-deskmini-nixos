@@ -7,6 +7,8 @@ anyenv
 !/dunst/**
 !/i3/**
 !/i3status/**
+!/sway/**
+!/waybar/**
 !/nixpkgs/**
 !/picom/**
 !/alacritty/**

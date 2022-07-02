@@ -1,0 +1,156 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod1
+
+set $menu_run "rofi -show drun"
+set $menu_path dmenu_path | rofi -dmenu | xargs swaymsg exec
+
+# terminal: i3-sensible-terminal, termite
+set $term alacritty
+
+# FONT
+font pango:Fira Code, DejaVu Sans Mono 14
+
+# AUTOSTART
+exec parcellite
+exec volumeicon
+exec mako
+exec nm-applet --indicator
+exec fcitx5
+exec blueman-applet
+exec redshift
+exec dbus-sway-environment
+exec configure-gtk
+# exec "sleep 3; picom -b --config ~/.config/picom/picom.conf"
+# exec_always "sh -c 'sleep 3; ~/.bin/wayvnc_run.sh'"
+# exec psensor
+# exec bash ${HOME}/.bin/run_xrandr
+# exec bash .screenlayout/arandr.sh
+
+# KEY BIND
+floating_modifier $mod
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu_run
+bindsym $mod+Shift+d exec $menu_path
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+z split h
+bindsym $mod+x split v
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+f fullscreen toggle
+bindsym $mod+a focus parent
+
+# screenshots
+bindsym $mod+c exec grim -g "$(slurp)" /tmp/$(date +'%H:%M:%S.png')
+
+bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+r restart
+
+# Brightness
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Volume
+bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
+bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
+bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+
+# DUAL SCREEN SETTING
+# set $1stMonitor DP-1
+# set $2ndMonitor HDMI-1
+# workspace 1 output $1stMonitor
+# workspace 2 output $1stMonitor
+# workspace 3 output $1stMonitor
+# workspace 4 output $1stMonitor
+# workspace 5 output $1stMonitor
+# workspace 6 output $2ndMonitor
+# workspace 7 output $2ndMonitor
+# workspace 8 output $2ndMonitor
+# workspace 9 output $2ndMonitor
+# workspace 10 output $2ndMonitor
+
+# SWITCH TO WORKSPACE
+bindsym $mod+q workspace q
+bindsym $mod+w workspace w
+bindsym $mod+e workspace e
+bindsym $mod+r workspace r
+bindsym $mod+t workspace t
+bindsym $mod+y workspace y
+bindsym $mod+u workspace u
+bindsym $mod+i workspace i
+bindsym $mod+o workspace o
+bindsym $mod+p workspace p
+
+# MOVE FOCUSED CONTAINER TO WORKSPACE
+bindsym $mod+Control+q move container to workspace q
+bindsym $mod+Control+w move container to workspace w
+bindsym $mod+Control+e move container to workspace e
+bindsym $mod+Control+r move container to workspace r
+bindsym $mod+Control+t move container to workspace t
+bindsym $mod+Control+y move container to workspace y
+bindsym $mod+Control+u move container to workspace u
+bindsym $mod+Control+i move container to workspace i
+bindsym $mod+Control+o move container to workspace o
+bindsym $mod+Control+p move container to workspace p
+
+# RESIZE WINDOW
+mode "resize" {
+  bindsym h resize shrink width 1 px or 1 ppt
+  bindsym j resize grow height 1 px or 1 ppt
+  bindsym k resize shrink height 1 px or 1 ppt
+  bindsym l resize grow width 1 px or 1 ppt
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+r mode "resize"
+
+# WINDOW SETTINGS
+for_window [class="^.*"]               border pixel 0
+for_window [window_role="pop-up"]      floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"]      floating enable
+
+# I3-GAPS
+gaps inner 5
+gaps outer 3
+smart_gaps on
+
+default_border pixel 4
+default_floating_border normal 0
+# hide_edge_borders none
+
+# COLORS
+client.background #162025
+client.focused #bfbfbf #162025 #bfbfbf #193a48 #193a48
+client.unfocused #bfbfbf #162025 #bfbfbf #193a48 #193a48
+client.focused_inactive #bfbfbf #162025 #bfbfbf #193a48 #193a48
+client.urgent #bfbfbf #162025 #bfbfbf #193a48 #193a48
+client.placeholder #bfbfbf #162025 #bfbfbf #193a48 #193a48
+
+bar {
+  swaybar_command waybar
+  position top
+}
