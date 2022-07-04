@@ -116,6 +116,8 @@ endif
 " --------------------
 syntax enable
 set background=dark
-colorscheme iceberg
+if !empty(glob($DATA.'/plugged'))
+  colorscheme iceberg
+endif
 
 set exrc
