@@ -11,6 +11,7 @@ end
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
+
   -- Packer can manage inself
   use 'wbthomason/packer.nvim'
 
@@ -18,9 +19,18 @@ return require('packer').startup(function()
   use 'cohama/lexima.vim'
   -- Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tag, and more.
   use 'tpope/vim-surround'
-
+  -- A light and configurable statusline/tabline plugin for vim
   use 'itchyny/lightline.vim'
+
+  use 'lambdalisue/fern.vim'
+  use 'lambdalisue/fern-git-status.vim'
+  use 'lambdalisue/glyph-palette.vim'
+  use 'lambdalisue/nerdfont.vim'
+  use 'lambdalisue/fern-renderer-nerdfont.vim'
+
+  use 'ibhagwan/fzf-lua'
 
   -- colorscheme
   use 'cocopon/iceberg.vim'
+
 end)

@@ -2,8 +2,8 @@
 
 -- 行表示
 vim.opt.number = true
--- 相対表示
-vim.opt.relativenumber = true
+-- 相対行表示
+-- vim.opt.relativenumber = true
 -- クリップボード設定
 vim.opt.clipboard:append{'unnamedplus'}
 -- CJK対策
@@ -27,6 +27,6 @@ vim.opt.swapfile = false
 -- 補完'ins-completion'についてのオプション
 vim.opt.completeopt = menu, menuone, noselect
 -- カーソル行の強調。'CursorLine' 'hl-CursorLine'
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 -- 構文ハイライトを有効
 vim.opt.syntax = enable

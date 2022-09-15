@@ -48,6 +48,8 @@ export PATH=/usr/local/shell:$PATH
 
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 # Options to fzf command
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'

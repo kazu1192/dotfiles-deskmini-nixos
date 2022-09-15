@@ -8,7 +8,8 @@ set $menu_run "rofi -show drun"
 set $menu_path dmenu_path | rofi -dmenu | xargs swaymsg exec
 
 # terminal: i3-sensible-terminal, termite
-set $term alacritty
+# set $term alacritty
+set $term wezterm
 
 # FONT
 font pango:Fira Code, DejaVu Sans Mono 14
@@ -38,12 +39,13 @@ output HDMI-A-1 {
 
 # set virtual output (wayvnc server)
 output HEADLESS-1 {
-  res 1920x1080
-  scale 1
+  res 2560x1440
+  scale 1.5
 }
 
 # set wallpaper
-output "*" background ~/ghq/github.com/NixOS/nixos-artwork/wallpapers/nix-wallpaper-nineish-dark-gray.png fill
+# output "*" background ~/ghq/github.com/NixOS/nixos-artwork/wallpapers/nix-wallpaper-nineish-dark-gray.png fill
+output "*" background ~/Picture/wallpaper/581398.jpg fill
 
 # KEY BIND
 floating_modifier $mod
@@ -92,19 +94,32 @@ bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
 bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 
+# SCREEN SETTING
+set $Monitor HEADLESS-1
+workspace q output $Monitor
+workspace w output $Monitor
+workspace e output $Monitor
+workspace r output $Monitor
+workspace t output $Monitor
+workspace y output $Monitor
+workspace u output $Monitor
+workspace i output $Monitor
+workspace o output $Monitor
+workspace p output $Monitor
+
 # DUAL SCREEN SETTING
-set $1stMonitor HDMI-A-1
-set $2ndMonitor HEADLESS-1
-workspace q output $1stMonitor
-workspace w output $1stMonitor
-workspace e output $1stMonitor
-workspace r output $1stMonitor
-workspace t output $1stMonitor
-workspace y output $2ndMonitor
-workspace u output $2ndMonitor
-workspace i output $2ndMonitor
-workspace o output $2ndMonitor
-workspace p output $2ndMonitor
+# set $1stMonitor HDMI-A-1
+# set $2ndMonitor HEADLESS-1
+# workspace q output $1stMonitor
+# workspace w output $1stMonitor
+# workspace e output $1stMonitor
+# workspace r output $1stMonitor
+# workspace t output $1stMonitor
+# workspace y output $2ndMonitor
+# workspace u output $2ndMonitor
+# workspace i output $2ndMonitor
+# workspace o output $2ndMonitor
+# workspace p output $2ndMonitor
 
 # SWITCH TO WORKSPACE
 bindsym $mod+q workspace q
@@ -169,4 +184,5 @@ client.placeholder #bfbfbf #162025 #bfbfbf #193a48 #193a48
 bar {
   swaybar_command waybar
   position top
+  mode "overlay"
 }
