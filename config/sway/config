@@ -33,7 +33,7 @@ exec_always "systemctl --user import-environment; systemctl --user start sway-se
 
 # set output & scaling
 output HDMI-A-1 {
-  res 1920x1080
+  res 2560x1440
   scale 1
 }
 
@@ -95,33 +95,53 @@ bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 
 # SCREEN SETTING
-set $Monitor HEADLESS-1
-workspace q output $Monitor
-workspace w output $Monitor
-workspace e output $Monitor
-workspace r output $Monitor
-workspace t output $Monitor
-workspace y output $Monitor
-workspace u output $Monitor
-workspace i output $Monitor
-workspace o output $Monitor
-workspace p output $Monitor
+# set $Monitor HEADLESS-1
+# workspace q output $Monitor
+# workspace w output $Monitor
+# workspace e output $Monitor
+# workspace r output $Monitor
+# workspace t output $Monitor
+# workspace y output $Monitor
+# workspace u output $Monitor
+# workspace i output $Monitor
+# workspace o output $Monitor
+# workspace p output $Monitor
 
 # DUAL SCREEN SETTING
-# set $1stMonitor HDMI-A-1
-# set $2ndMonitor HEADLESS-1
-# workspace q output $1stMonitor
-# workspace w output $1stMonitor
-# workspace e output $1stMonitor
-# workspace r output $1stMonitor
-# workspace t output $1stMonitor
-# workspace y output $2ndMonitor
-# workspace u output $2ndMonitor
-# workspace i output $2ndMonitor
-# workspace o output $2ndMonitor
-# workspace p output $2ndMonitor
+set $1stMonitor HDMI-A-1
+set $2ndMonitor HEADLESS-1
+workspace 1 output $1stMonitor
+workspace 2 output $1stMonitor
+workspace 3 output $1stMonitor
+workspace 4 output $1stMonitor
+workspace 5 output $1stMonitor
+workspace 6 output $1stMonitor
+workspace 7 output $1stMonitor
+workspace 8 output $1stMonitor
+workspace 9 output $1stMonitor
+workspace 0 output $1stMonitor
+workspace q output $2ndMonitor
+workspace w output $2ndMonitor
+workspace e output $2ndMonitor
+workspace r output $2ndMonitor
+workspace t output $2ndMonitor
+workspace y output $2ndMonitor
+workspace u output $2ndMonitor
+workspace i output $2ndMonitor
+workspace o output $2ndMonitor
+workspace p output $2ndMonitor
 
 # SWITCH TO WORKSPACE
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 0
 bindsym $mod+q workspace q
 bindsym $mod+w workspace w
 bindsym $mod+e workspace e
@@ -180,9 +200,3 @@ client.unfocused #bfbfbf #162025 #bfbfbf #193a48 #193a48
 client.focused_inactive #bfbfbf #162025 #bfbfbf #193a48 #193a48
 client.urgent #bfbfbf #162025 #bfbfbf #193a48 #193a48
 client.placeholder #bfbfbf #162025 #bfbfbf #193a48 #193a48
-
-bar {
-  swaybar_command waybar
-  position top
-  mode "overlay"
-}
