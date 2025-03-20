@@ -61,6 +61,8 @@ require('packer').startup(function(use)
   -- colorscheme
   use 'cocopon/iceberg.vim'
 
+  use 'vim-jp/vimdoc-ja'
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
@@ -89,3 +91,5 @@ cmp.setup({
     { name = "path" },
   })
 })
+
+vim.opt.helplang = "ja,en"

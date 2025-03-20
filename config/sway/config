@@ -2,17 +2,18 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+# set $mod Mod1
+set $mod Mod4
 
 set $menu_run "rofi -show drun"
 set $menu_path dmenu_path | rofi -dmenu | xargs swaymsg exec
 
 # terminal: i3-sensible-terminal, termite
-# set $term alacritty
-set $term wezterm
+set $term alacritty
+# set $term wezterm
 
 # FONT
-font pango:Fira Code, DejaVu Sans Mono 14
+font pango:Fira Code, DejaVu Sans Mono 18
 
 # AUTOSTART
 exec parcellite
@@ -32,16 +33,23 @@ exec configure-gtk
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 
 # set output & scaling
+# output DP-1 {
+#   # res 2560x1440
+#   res 3840x2160
+#   scale 1.5
+# }
+
 output HDMI-A-1 {
-  res 2560x1440
+  # res 2560x1440
   scale 1
+  transform 270
 }
 
 # set virtual output (wayvnc server)
-output HEADLESS-1 {
-  res 2560x1440
-  scale 1.5
-}
+# output HEADLESS-1 {
+#   res 2560x1440
+#   scale 1.5
+# }
 
 # set wallpaper
 # output "*" background ~/ghq/github.com/NixOS/nixos-artwork/wallpapers/nix-wallpaper-nineish-dark-gray.png fill
@@ -109,7 +117,7 @@ bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 
 # DUAL SCREEN SETTING
 set $1stMonitor HDMI-A-1
-set $2ndMonitor HEADLESS-1
+# set $2ndMonitor HEADLESS-1
 workspace 1 output $1stMonitor
 workspace 2 output $1stMonitor
 workspace 3 output $1stMonitor
@@ -120,16 +128,16 @@ workspace 7 output $1stMonitor
 workspace 8 output $1stMonitor
 workspace 9 output $1stMonitor
 workspace 0 output $1stMonitor
-workspace q output $2ndMonitor
-workspace w output $2ndMonitor
-workspace e output $2ndMonitor
-workspace r output $2ndMonitor
-workspace t output $2ndMonitor
-workspace y output $2ndMonitor
-workspace u output $2ndMonitor
-workspace i output $2ndMonitor
-workspace o output $2ndMonitor
-workspace p output $2ndMonitor
+# workspace q output $2ndMonitor
+# workspace w output $2ndMonitor
+# workspace e output $2ndMonitor
+# workspace r output $2ndMonitor
+# workspace t output $2ndMonitor
+# workspace y output $2ndMonitor
+# workspace u output $2ndMonitor
+# workspace i output $2ndMonitor
+# workspace o output $2ndMonitor
+# workspace p output $2ndMonitor
 
 # SWITCH TO WORKSPACE
 bindsym $mod+1 workspace 1
@@ -142,28 +150,38 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 0
-bindsym $mod+q workspace q
-bindsym $mod+w workspace w
-bindsym $mod+e workspace e
-bindsym $mod+r workspace r
-bindsym $mod+t workspace t
-bindsym $mod+y workspace y
-bindsym $mod+u workspace u
-bindsym $mod+i workspace i
-bindsym $mod+o workspace o
-bindsym $mod+p workspace p
+# bindsym $mod+q workspace q
+# bindsym $mod+w workspace w
+# bindsym $mod+e workspace e
+# bindsym $mod+r workspace r
+# bindsym $mod+t workspace t
+# bindsym $mod+y workspace y
+# bindsym $mod+u workspace u
+# bindsym $mod+i workspace i
+# bindsym $mod+o workspace o
+# bindsym $mod+p workspace p
 
 # MOVE FOCUSED CONTAINER TO WORKSPACE
-bindsym $mod+Control+q move container to workspace q
-bindsym $mod+Control+w move container to workspace w
-bindsym $mod+Control+e move container to workspace e
-bindsym $mod+Control+r move container to workspace r
-bindsym $mod+Control+t move container to workspace t
-bindsym $mod+Control+y move container to workspace y
-bindsym $mod+Control+u move container to workspace u
-bindsym $mod+Control+i move container to workspace i
-bindsym $mod+Control+o move container to workspace o
-bindsym $mod+Control+p move container to workspace p
+bindsym $mod+Control+1 move container to workspace 1
+bindsym $mod+Control+2 move container to workspace 2
+bindsym $mod+Control+3 move container to workspace 3
+bindsym $mod+Control+4 move container to workspace 4
+bindsym $mod+Control+5 move container to workspace 5
+bindsym $mod+Control+6 move container to workspace 6
+bindsym $mod+Control+7 move container to workspace 7
+bindsym $mod+Control+8 move container to workspace 8
+bindsym $mod+Control+9 move container to workspace 9
+bindsym $mod+Control+0 move container to workspace 0
+# bindsym $mod+Control+q move container to workspace q
+# bindsym $mod+Control+w move container to workspace w
+# bindsym $mod+Control+e move container to workspace e
+# bindsym $mod+Control+r move container to workspace r
+# bindsym $mod+Control+t move container to workspace t
+# bindsym $mod+Control+y move container to workspace y
+# bindsym $mod+Control+u move container to workspace u
+# bindsym $mod+Control+i move container to workspace i
+# bindsym $mod+Control+o move container to workspace o
+# bindsym $mod+Control+p move container to workspace p
 
 # RESIZE WINDOW
 mode "resize" {
